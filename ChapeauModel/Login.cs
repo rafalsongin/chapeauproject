@@ -4,7 +4,7 @@
     {
         void PrintHello()
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Rafal: It's a me Cezar");
         }
     }
 }
