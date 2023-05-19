@@ -9,18 +9,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauUI", "ChapeauUI\Chap
 		{FB8AAE41-4072-4C51-837A-2DEDFB061E98} = {FB8AAE41-4072-4C51-837A-2DEDFB061E98}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauModel", "ChapeauModel\ChapeauModel.csproj", "{FB8AAE41-4072-4C51-837A-2DEDFB061E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauModel", "ChapeauModel\ChapeauModel.csproj", "{FB8AAE41-4072-4C51-837A-2DEDFB061E98}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252} = {7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauService", "ChapeauService\ChapeauService.csproj", "{D278093D-B35B-4D59-B62F-5B3DCEAFEF62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauService", "ChapeauService\ChapeauService.csproj", "{D278093D-B35B-4D59-B62F-5B3DCEAFEF62}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252} = {7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252}
 		{FB8AAE41-4072-4C51-837A-2DEDFB061E98} = {FB8AAE41-4072-4C51-837A-2DEDFB061E98}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapeauDAL", "ChapeauDAL\ChapeauDAL.csproj", "{7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChapeauDAL", "ChapeauDAL\ChapeauDAL.csproj", "{7E3A4C89-F39B-4CC0-B8D3-4D4960CE7252}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
