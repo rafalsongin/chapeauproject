@@ -1,6 +1,6 @@
 ﻿namespace ChapeauService
 {
-    public class LoginService
+    public class OrderService
     {
         void PrintHello2()
         {
