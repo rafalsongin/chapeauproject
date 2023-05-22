@@ -6,7 +6,7 @@ namespace ChapeauDAL
 {
     public class OrderDao : BaseDao
     {
-        public List<Order> GetAllRooms()
+        public List<Order> GetAllOrders()
         {
             // sql query
             string query = "SELECT id, host, status, order_taken_time, comments, table_id, bill_id FROM [order]";
