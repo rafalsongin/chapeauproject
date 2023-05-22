@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public double Price { get; set; }
+        public float Price { get; set; }
         public MenuCategory Category { get; set; }
         public int StockLeft { get; set; }
         public int MenuId { get; set; }
