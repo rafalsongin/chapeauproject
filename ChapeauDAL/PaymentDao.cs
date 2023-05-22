@@ -6,7 +6,7 @@ namespace ChapeauDAL
 {
     public class PaymentDao : BaseDao
     {
-        public List<Drink> GetAllPayments()
+        public List<Payment> GetAllPayments()
         {
             // sql query
             string query = "SELECT id, payment_method, table_id, bill_id FROM [payment]";

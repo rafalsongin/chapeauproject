@@ -1,11 +1,22 @@
-﻿namespace ChapeauService
+﻿using ChapeauDAL;
+using ChapeauModel;
+
+namespace ChapeauService
 {
     public class OrderService
     {
-        void PrintHello2()
+        private OrderDao orderDb;
+
+        public OrderService()
         {
-            Console.WriteLine("Hello 2");
-            Console.WriteLine("som");
+            orderDb = new OrderDao();
+        }
+
+        public List<Order> GetOrders()
+        {
+            List<Order> orders = orderDb.GetAllOrders();
+
+            return orders;
         }
     }
 }

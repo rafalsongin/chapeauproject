@@ -6,7 +6,7 @@ namespace ChapeauDAL
 {
     public class TableDao : BaseDao
     {
-        public List<Table> GetAllDrinks()
+        public List<Table> GetAllTables()
         {
             // sql query
             string query = "SELECT id, status, covers, is_legal_drinking_age FROM [table]";
