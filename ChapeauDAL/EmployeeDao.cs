@@ -38,5 +38,15 @@ namespace ChapeauDAL
             }
             return employees;
         }
+
+        public List<Employee> GetEmployeeById(int id)
+        {
+            string query = "SELECT id, first_name, last_name, login_username, login_password, date_of_birth, phone_number, email, role FROM [employee] WHERE id = @id";
+            // to prevent sql injection
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@id", id);
+
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
     }
 }
