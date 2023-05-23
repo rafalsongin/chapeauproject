@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ChapeauService;
+using SomerenService;
 
 namespace ChapeauUI
 {
@@ -14,7 +16,24 @@ namespace ChapeauUI
     {
         public LoginUI()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+
+                // further code
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+
+                ErrorLogger errorLogger = new ErrorLogger();
+                errorLogger.LogError(error.Message);
+            }
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
