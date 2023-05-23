@@ -12,13 +12,7 @@
 
     public enum EmployeeRole
     {
-        Waiter, Bartender, Chef, Manager
-    }
-
-    // is needed?
-    public enum DrinkServingType 
-    {
-        Glass, Bottle
+        Waiter, Bartender, Chef, Manager, Undefined
     }
 
     public enum MenuCategory 
