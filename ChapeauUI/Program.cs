@@ -11,14 +11,20 @@ namespace ChapeauUI
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-          //  Application.Run(new LoginViewUI());
-            Application.Run(new KitchenForm());
-          //  StartCezar();
+            //Application.Run(new LoginUI());
+
+            //StartCezar();
+            StartRafal();
         }
 
-       static void StartCezar()
+        static void StartCezar()
         {
             Application.Run(new KitchenForm());
+        }
+
+        static void StartRafal()
+        {
+            Application.Run(new LoginUI());
         }
     }
 }
