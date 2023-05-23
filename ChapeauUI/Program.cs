@@ -13,12 +13,18 @@ namespace ChapeauUI
             ApplicationConfiguration.Initialize();
             //Application.Run(new LoginUI());
 
-            StartCezar();
+            //StartCezar();
+            StartRafal();
         }
 
-       static void StartCezar()
+        static void StartCezar()
         {
             Application.Run(new KitchenForm());
+        }
+
+        static void StartRafal()
+        {
+            Application.Run(new LoginUI());
         }
     }
 }
