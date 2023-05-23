@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomerenService;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,19 @@ namespace ChapeauUI
     {
         public AllTablesViewUI()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+
+                // further code
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+
+                ErrorLogger errorLogger = new ErrorLogger();
+                errorLogger.LogError(error.Message);
+            }
         }
     }
 }
