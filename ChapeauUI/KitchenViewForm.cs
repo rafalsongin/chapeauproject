@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class KitchenForm : Form
+    public partial class KitchenViewForm : Form
     {
-        public KitchenForm()
+        public KitchenViewForm()
         {
             InitializeComponent();
         }

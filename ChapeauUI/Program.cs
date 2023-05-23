@@ -19,7 +19,7 @@ namespace ChapeauUI
 
         static void StartCezar()
         {
-            Application.Run(new KitchenForm());
+            Application.Run(new KitchenViewForm());
         }
 
         static void StartRafal()

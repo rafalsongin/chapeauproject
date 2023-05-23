@@ -1,6 +1,6 @@
 ﻿namespace ChapeauUI
 {
-    partial class KitchenForm
+    partial class KitchenViewForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenViewForm));
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();

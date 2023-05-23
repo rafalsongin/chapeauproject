@@ -80,7 +80,7 @@ namespace ChapeauUI
                     Form activeForm = ActiveForm;
                     activeForm.Hide();
 
-                    KitchenForm newForm = new KitchenForm();
+                    KitchenViewForm newForm = new KitchenViewForm();
                     newForm.ShowDialog();
 
                     activeForm.Close();
