@@ -12,6 +12,13 @@ namespace ChapeauUI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginUI());
+
+            StartCezar();
+        }
+
+       static void StartCezar()
+        {
+            Application.Run(new KitchenForm());
         }
     }
 }

@@ -10,21 +10,12 @@ using System.Windows.Forms;
 
 namespace ChapeauUI
 {
-    public partial class Form1 : Form
+    public partial class KitchenForm : Form
     {
-        public Form1()
+        public KitchenForm()
         {
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
