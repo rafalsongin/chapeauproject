@@ -1,8 +1,8 @@
 namespace ChapeauUI
 {
-    public partial class LoginUI : Form
+    public partial class LoginViewUI : Form
     {
-        public LoginUI()
+        public LoginViewUI()
         {
             InitializeComponent();
         }

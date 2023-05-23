@@ -1,6 +1,6 @@
 ﻿namespace ChapeauUI
 {
-    partial class LoginUI
+    partial class LoginViewUI
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginViewUI));
             pictureBoxChapeauLogo = new PictureBox();
             label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
