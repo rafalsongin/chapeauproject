@@ -36,6 +36,7 @@
             textBoxUsername = new TextBox();
             labelPassword = new Label();
             labelUsername = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
             SuspendLayout();
             // 
@@ -108,6 +109,14 @@
             labelUsername.TabIndex = 7;
             labelUsername.Text = "USERNAME: ";
             // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Location = new Point(12, 271);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(452, 412);
+            panel1.TabIndex = 13;
+            // 
             // LoginUI
             // 
             AutoScaleDimensions = new SizeF(14F, 36F);
@@ -120,12 +129,13 @@
             Controls.Add(labelPassword);
             Controls.Add(labelUsername);
             Controls.Add(pictureBoxChapeauLogo);
+            Controls.Add(panel1);
             Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             MaximumSize = new Size(500, 800);
             MinimumSize = new Size(500, 800);
             Name = "LoginUI";
-            Text = "Chapeau Restaurant";
+            Text = "Chapeau Login";
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -140,5 +150,6 @@
         private TextBox textBoxUsername;
         private Label labelPassword;
         private Label labelUsername;
+        private Panel panel1;
     }
 }
