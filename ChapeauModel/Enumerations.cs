@@ -2,7 +2,7 @@
 {
     public enum OrderStatus
     {
-        Pending, Preparing, Ready // maybe cancelled as well
+        Pending,InPreparation, Prepared, Served // maybe cancelled as well
     }
 
     public enum TableStatus
