@@ -25,5 +25,10 @@ namespace ChapeauService
 
             return table;
         }
+        
+        public void ChangeTableStatus(Table table)
+        {
+            tableDb.ChangeTableStatus(table);
+        }
     }
 }

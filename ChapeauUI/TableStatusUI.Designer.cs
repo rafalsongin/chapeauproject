@@ -121,6 +121,7 @@
             buttonBack.TabIndex = 18;
             buttonBack.Text = "BACK";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // panelNameBackground
             // 

@@ -15,14 +15,17 @@ namespace ChapeauUI
 {
     public partial class TableStatusUI : Form
     {
-        public TableStatusUI()
+        private Table Table { get; set; }
+
+        public TableStatusUI(int tableId)
         {
             try
             {
                 InitializeComponent();
 
+                Table = GetTable(tableId);
                 // how to get clicked button id?
-                SetActiveTableStatus(1);
+                SetActiveTableStatusVisual(1);
                 // SetTableHeadingNumber() - add
             }
             catch (Exception error)
@@ -34,9 +37,17 @@ namespace ChapeauUI
             }
         }
 
+        private Table GetTable(int id)
+        {
+            TableService tableService = new TableService();
+            Table table = tableService.GetTableById(id);
+
+            return table;
+        }
+
         private void buttonSetTableFree_Click(object sender, EventArgs e)
         {
-            ButtonSetTableFreeActive();
+            ButtonSetTableAvailableActive();
         }
 
         private void buttonSetTableOccupied_Click(object sender, EventArgs e)
@@ -49,33 +60,30 @@ namespace ChapeauUI
             ButtonSetTableReservedActive();
         }
 
-        private TableStatus DefineTableStatus(int id)
+        private void buttonBack_Click(object sender, EventArgs e)
         {
-            TableService tableService = new TableService();
-            Table table = tableService.GetTableById(id);
-
-            return table.Status;
+            AllTablesViewUI goBackForm = new AllTablesViewUI();
+            OpenUI(goBackForm);
         }
 
-        private void SetActiveTableStatus(int id)
+        // change table status in the database
+        private void ChangeTableStatus(TableStatus status)
         {
-            /*if (DefineTableStatus(id) == TableStatus.Available)
-            {
+            TableService tableService = new TableService();
+            Table.status = status.ToString();
 
-            }
-            else if (DefineTableStatus(id) == TableStatus.Busy)
-            {
+            tableService.ChangeTableStatus(Table);
+        }
 
-            }
-            else // TableStatus.Reserved
-            {
+        // shows table status once UI is opened
+        private void SetActiveTableStatusVisual(int id)
+        {
+            Table tablePage = GetTable(id);
 
-            }*/
-
-            switch (DefineTableStatus(id))
+            switch (tablePage.Status)
             {
                 case TableStatus.Available:
-                    ButtonSetTableFreeActive();
+                    ButtonSetTableAvailableActive();
                     break;
                 case TableStatus.Occupied:
                     ButtonSetTableOccupiedActive();
@@ -92,17 +100,17 @@ namespace ChapeauUI
         {
             button.FlatAppearance.BorderSize = 3;
         }
-        
+
         private void SetButtonFontStyleToActive(Button button)
         {
             button.Font = new Font(buttonSetTableFree.Font, FontStyle.Bold);
         }
-        
+
         private void SetButtonBorderToUnactive(Button button)
         {
             button.FlatAppearance.BorderSize = 1;
         }
-        
+
         private void SetButtonFontStyleToUnactive(Button button)
         {
             button.Font = new Font(buttonSetTableFree.Font, FontStyle.Regular);
@@ -113,32 +121,54 @@ namespace ChapeauUI
             SetButtonBorderToActive(button);
             SetButtonFontStyleToActive(button);
         }
-        
+
         private void SetButtonUnactive(Button button)
         {
             SetButtonBorderToUnactive(button);
             SetButtonFontStyleToUnactive(button);
         }
 
-        private void ButtonSetTableFreeActive()
+        private void ButtonSetTableAvailableActive()
         {
+            Table.status = TableStatus.Available.ToString();
+            ChangeTableStatus(TableStatus.Available);
+
             SetButtonActive(buttonSetTableFree);
             SetButtonUnactive(buttonSetTableOccupied);
-            SetButtonUnactive(buttonSetTableReserved);
-        }    
+            SetButtonUnactive(buttonSetTableReserved); 
+        }
 
         private void ButtonSetTableOccupiedActive()
         {
+            Table.status = TableStatus.Occupied.ToString();
+            ChangeTableStatus(TableStatus.Occupied);
+
             SetButtonActive(buttonSetTableOccupied);
             SetButtonUnactive(buttonSetTableFree);
             SetButtonUnactive(buttonSetTableReserved);
-        }      
+        }
 
         private void ButtonSetTableReservedActive()
-        {
+        {   
+            Table.status = TableStatus.Reserved.ToString();
+            ChangeTableStatus(TableStatus.Reserved);
+
             SetButtonActive(buttonSetTableReserved);
             SetButtonUnactive(buttonSetTableFree);
             SetButtonUnactive(buttonSetTableOccupied);
+        }
+
+        private void OpenUI(Form newForm)
+        {
+            // define active form (LoginUI) and hide it
+            Form activeForm = ActiveForm;
+            activeForm.Hide();
+
+            // show new form, which needs to be open
+            newForm.ShowDialog();
+
+            // close previous form (LoginUI), so it's not running in the background
+            activeForm.Close();
         }
     }
 }

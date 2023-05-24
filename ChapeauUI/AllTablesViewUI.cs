@@ -25,7 +25,11 @@ namespace ChapeauUI
         {
             try
             {
-                TableStatusUI newForm = new TableStatusUI();
+                Button clickedButton = (Button)sender;
+                int buttonNumber = (int)clickedButton.Tag;
+
+                TableStatusUI newForm = new TableStatusUI(buttonNumber); // table number
+
                 OpenUI(newForm);
             }
             catch (Exception error)
