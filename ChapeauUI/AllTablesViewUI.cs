@@ -25,16 +25,8 @@ namespace ChapeauUI
         {
             try
             {
-                // Define active form (AllTablesViewUI) and hide it
-                Form activeForm = ActiveForm;
-                activeForm.Hide();
-
-                // Show new form, which needs to be open
                 TableStatusUI newForm = new TableStatusUI();
-                newForm.ShowDialog();
-
-                // Close previous form (AllTablesViewUI), so it's not running in the background
-                activeForm.Close();
+                OpenUI(newForm);
             }
             catch (Exception error)
             {
@@ -43,6 +35,19 @@ namespace ChapeauUI
                 ErrorLogger errorLogger = new ErrorLogger();
                 errorLogger.LogError(error.Message);
             }
+        }
+
+        private void OpenUI(Form newForm)
+        {
+            // define active form (LoginUI) and hide it
+            Form activeForm = ActiveForm;
+            activeForm.Hide();
+
+            // show new form, which needs to be open
+            newForm.ShowDialog();
+
+            // close previous form (LoginUI), so it's not running in the background
+            activeForm.Close();
         }
     }
 }
