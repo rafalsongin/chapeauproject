@@ -18,6 +18,8 @@ namespace ChapeauUI
         public AllTablesViewUI()
         {
             InitializeComponent();
+
+            SetButtonTableTag();
         }
 
         // event handler, runs from button properties > events > Click
@@ -52,6 +54,20 @@ namespace ChapeauUI
 
             // close previous form (LoginUI), so it's not running in the background
             activeForm.Close();
+        }
+
+        private void SetButtonTableTag()
+        {
+            buttonTable1.Tag = 1;
+            buttonTable2.Tag = 2;
+            buttonTable3.Tag = 3;
+            buttonTable4.Tag = 4;
+            buttonTable5.Tag = 5;
+            buttonTable6.Tag = 6;
+            buttonTable7.Tag = 7;
+            buttonTable8.Tag = 8;
+            buttonTable9.Tag = 9;
+            buttonTable10.Tag = 10;
         }
     }
 }

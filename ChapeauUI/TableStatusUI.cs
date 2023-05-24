@@ -22,11 +22,10 @@ namespace ChapeauUI
             try
             {
                 InitializeComponent();
-
                 Table = GetTable(tableId);
-                // how to get clicked button id?
-                SetActiveTableStatusVisual(1);
-                // SetTableHeadingNumber() - add
+
+                SetActiveTableStatusVisual(Table.Id) ;
+                SetTableHeadingNumber();
             }
             catch (Exception error)
             {
@@ -169,6 +168,11 @@ namespace ChapeauUI
 
             // close previous form (LoginUI), so it's not running in the background
             activeForm.Close();
+        }
+
+        private void SetTableHeadingNumber()
+        {
+            labelTableHeading.Text = $"TABLE {Table.Id}";
         }
     }
 }
