@@ -17,19 +17,7 @@ namespace ChapeauUI
     {
         public LoginUI()
         {
-            try
-            {
-                InitializeComponent();
-
-                // further code
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-
-                ErrorLogger errorLogger = new ErrorLogger();
-                errorLogger.LogError(error.Message);
-            }
+            InitializeComponent();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
