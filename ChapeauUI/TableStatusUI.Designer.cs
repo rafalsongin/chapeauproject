@@ -48,13 +48,14 @@
             buttonSetTableFree.FlatAppearance.BorderColor = Color.Black;
             buttonSetTableFree.FlatAppearance.BorderSize = 3;
             buttonSetTableFree.FlatStyle = FlatStyle.Flat;
-            buttonSetTableFree.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSetTableFree.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             buttonSetTableFree.Location = new Point(19, 324);
             buttonSetTableFree.Name = "buttonSetTableFree";
             buttonSetTableFree.Size = new Size(96, 46);
             buttonSetTableFree.TabIndex = 15;
             buttonSetTableFree.Text = "FREE";
             buttonSetTableFree.UseVisualStyleBackColor = false;
+            buttonSetTableFree.Click += buttonSetTableFree_Click;
             // 
             // buttonSetTableOccupied
             // 
@@ -68,6 +69,7 @@
             buttonSetTableOccupied.TabIndex = 15;
             buttonSetTableOccupied.Text = "OCCUPIED";
             buttonSetTableOccupied.UseVisualStyleBackColor = false;
+            buttonSetTableOccupied.Click += buttonSetTableOccupied_Click;
             // 
             // buttonSetTableReserved
             // 
@@ -81,6 +83,7 @@
             buttonSetTableReserved.TabIndex = 15;
             buttonSetTableReserved.Text = "RESERVED";
             buttonSetTableReserved.UseVisualStyleBackColor = false;
+            buttonSetTableReserved.Click += buttonSetTableReserved_Click;
             // 
             // labelTableHeading
             // 
@@ -118,6 +121,7 @@
             buttonBack.TabIndex = 18;
             buttonBack.Text = "BACK";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // panelNameBackground
             // 

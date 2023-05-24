@@ -18,5 +18,17 @@ namespace ChapeauService
 
             return tables;
         }
+
+        public Table GetTableById(int id)
+        {
+            Table table = tableDb.GetTableById(id);
+
+            return table;
+        }
+        
+        public void ChangeTableStatus(Table table)
+        {
+            tableDb.ChangeTableStatus(table);
+        }
     }
 }

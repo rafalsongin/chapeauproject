@@ -17,19 +17,7 @@ namespace ChapeauUI
     {
         public LoginUI()
         {
-            try
-            {
-                InitializeComponent();
-
-                // further code
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-
-                ErrorLogger errorLogger = new ErrorLogger();
-                errorLogger.LogError(error.Message);
-            }
+            InitializeComponent();
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -71,32 +59,18 @@ namespace ChapeauUI
             }
         }
 
+        // opens UI based on the role of employee which is logging in
         private void OpenFormBasedOnTheRole(Employee employee)
         {
-            // opens relevant UI based on the role of employee which is logging in
             if (employee.Role == EmployeeRole.Waiter)
             {
-                // SAME APPLIES TO THE FOLLOWING ELSE IF's 
-                // define active form (LoginUI) and hide it
-                Form activeForm = ActiveForm;
-                activeForm.Hide();
-
-                // show new form, which needs to be open
                 AllTablesViewUI newForm = new AllTablesViewUI();
-                newForm.ShowDialog();
-
-                // close previous form (LoginUI), so it's not running in the background
-                activeForm.Close();
+                OpenUI(newForm);
             }
             else if (employee.Role == EmployeeRole.Chef)
             {
-                Form activeForm = ActiveForm;
-                activeForm.Hide();
-
                 KitchenViewUI newForm = new KitchenViewUI();
-                newForm.ShowDialog();
-
-                activeForm.Close();
+                OpenUI(newForm);
             }
             else if (employee.Role == EmployeeRole.Bartender)
             {
@@ -104,7 +78,7 @@ namespace ChapeauUI
             }
             else if (employee.Role == EmployeeRole.Manager)
             {
-                // no manager UI currently
+                // no manager UI
             }
             else
             {
@@ -122,6 +96,19 @@ namespace ChapeauUI
             {
                 throw new Exception("Please enter the password...");
             }
+        }
+
+        private void OpenUI(Form newForm)
+        {
+            // define active form (LoginUI) and hide it
+            Form activeForm = ActiveForm;
+            activeForm.Hide();
+
+            // show new form, which needs to be open
+            newForm.ShowDialog();
+
+            // close previous form (LoginUI), so it's not running in the background
+            activeForm.Close();
         }
     }
 }

@@ -7,7 +7,7 @@
 
     public enum TableStatus
     {
-        Available, Busy, Reserved
+        Available, Occupied, Reserved, Ordered, Undefined
     }
 
     public enum EmployeeRole

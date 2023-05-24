@@ -1,9 +1,34 @@
-﻿namespace ChapeauModel
+﻿using System.Data;
+
+namespace ChapeauModel
 {
     public class Table
     {
+        public string status = "";
+
         public int Id { get; set; }
-        public TableStatus Status { get; set; }
+        public TableStatus Status
+        {
+            get
+            {
+                if (status == "Available")
+                {
+                    return TableStatus.Available;
+                }
+                else if (status == "Occupied")
+                {
+                    return TableStatus.Occupied;
+                }
+                else if (status == "Reserved")
+                {
+                    return TableStatus.Reserved;
+                }
+                else
+                {
+                    return TableStatus.Undefined;
+                }
+            }
+        }
         public int Capacity { get; set; }
         public bool IsLegalDrinkingAge { get; set; }
 
