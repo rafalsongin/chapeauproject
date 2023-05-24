@@ -18,8 +18,8 @@ namespace ChapeauUI
         public AllTablesViewUI()
         {
             InitializeComponent();
-
             SetButtonTableTag();
+            SetAllButtonsColor();
         }
 
         // event handler, runs from button properties > events > Click
@@ -68,6 +68,52 @@ namespace ChapeauUI
             buttonTable8.Tag = 8;
             buttonTable9.Tag = 9;
             buttonTable10.Tag = 10;
+        }
+
+        private void SetButtonColorByStatus(Button button, int buttonNumber)
+        {
+            TableService tableService = new TableService();
+            Table table = tableService.GetTableById(buttonNumber);
+
+            // Available - 138, 210, 176
+            // Occupied - 255, 179, 71
+            // Reserved - 196, 196, 196
+            // Ordered - 248, 102, 39
+
+            if (table.Status == TableStatus.Available)
+            {
+                button.BackColor = Color.FromArgb(138, 210, 176);
+            }
+            else if (table.Status == TableStatus.Occupied)
+            {
+                button.BackColor = Color.FromArgb(255, 179, 71);
+            }
+            else if (table.Status == TableStatus.Reserved)
+            {
+                button.BackColor = Color.FromArgb(196, 196, 196);
+            }
+            else if (table.Status == TableStatus.Ordered)
+            {
+                button.BackColor = Color.FromArgb(196, 196, 196);
+            }
+            else
+            {
+                button.Visible = false;
+            }
+        }
+
+        private void SetAllButtonsColor()
+        {
+            SetButtonColorByStatus(buttonTable1, 1);
+            SetButtonColorByStatus(buttonTable2, 2);
+            SetButtonColorByStatus(buttonTable3, 3);
+            SetButtonColorByStatus(buttonTable4, 4);
+            SetButtonColorByStatus(buttonTable5, 5);
+            SetButtonColorByStatus(buttonTable6, 6);
+            SetButtonColorByStatus(buttonTable7, 7);
+            SetButtonColorByStatus(buttonTable8, 8);
+            SetButtonColorByStatus(buttonTable9, 9);
+            SetButtonColorByStatus(buttonTable10, 10);
         }
     }
 }
