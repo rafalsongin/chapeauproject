@@ -15,6 +15,11 @@ namespace ChapeauService
 
         public bool isCorrectPassword(string inputUsername, string inputPassword)
         {
+            if (employeeDb.GetEmployeeByUsername(inputUsername) == null) 
+            {
+                return false;
+            }
+
             // get hashed password from the database
             Employee employee = employeeDb.GetEmployeeByUsername(inputUsername);
             string hashedPassword = employee.LoginPassword;

@@ -50,7 +50,16 @@ namespace ChapeauDAL
             };
 
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
-            return ReadEmployee(dataTable);
+
+            // if no records found based on the username - user with given username doesn't exist
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return ReadEmployee(dataTable);
+            }
         }
 
         private Employee ReadEmployee(DataTable dataTable)
@@ -71,6 +80,5 @@ namespace ChapeauDAL
 
             return employee;
         }
-
     }
 }
