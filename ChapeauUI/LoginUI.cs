@@ -110,5 +110,10 @@ namespace ChapeauUI
             // close previous form (LoginUI), so it's not running in the background
             activeForm.Close();
         }
+
+        private void labelForgotPassword_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Please contact your manager...", "Forgot password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
     }
 }
