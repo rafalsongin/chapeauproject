@@ -14,7 +14,14 @@ namespace ChapeauService
 
         public List<Employee> GetEmployees()
         {
-            List<Employee> employee = employeeDb.GetAllEmployees();
+            List<Employee> employees = employeeDb.GetAllEmployees();
+
+            return employees;
+        }
+
+        public Employee GetEmployeeByUsername(string username)
+        {
+            Employee employee = employeeDb.GetEmployeeByUsername(username);
 
             return employee;
         }

@@ -1,23 +1,33 @@
 ﻿using ChapeauDAL;
 using ChapeauModel;
+using BCryptNet = BCrypt.Net.BCrypt;
 
 namespace ChapeauService
 {
-    // fix
     public class VerifyingService
     {
-        private EmployeeDao verifyingDb;
+        private EmployeeDao employeeDb;
 
         public VerifyingService()
         {
-            verifyingDb = new EmployeeDao();
+            employeeDb = new EmployeeDao();
         }
 
-        /*public List<Employee> GetEmployees()
+        public bool isCorrectPassword(string inputUsername, string inputPassword)
         {
-            List<Employee> verifyings = employeeDb.GetAllEmployees();
+            if (employeeDb.GetEmployeeByUsername(inputUsername) == null) 
+            {
+                return false;
+            }
 
-            return employee;
-        }*/
+            // get hashed password from the database
+            Employee employee = employeeDb.GetEmployeeByUsername(inputUsername);
+            string hashedPassword = employee.LoginPassword;
+
+            // check if the password is correct
+            bool passwordMatch = BCryptNet.Verify(inputPassword, hashedPassword);
+
+            return passwordMatch;
+        }
     }
 }

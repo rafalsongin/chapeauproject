@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using ChapeauModel;
 
@@ -9,7 +10,7 @@ namespace ChapeauDAL
         public List<Employee> GetAllEmployees()
         {
             // sql query
-            string query =  "SELECT id, first_name, last_name, login_username, login_password, date_of_birth, phone_number, email, role FROM [employee]";
+            string query =  "SELECT id, first_name, last_name, login_username, hashed_password, date_of_birth, phone_number, email, role FROM [employee]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -27,11 +28,11 @@ namespace ChapeauDAL
                     FirstName = (string)datarow["first_name"],
                     LastName = (string)datarow["last_name"],
                     LoginUsername = (string)datarow["login_username"],
-                    LoginPassword = (string)datarow["login_password"],
-                    DateOfBirth = (DateOnly)datarow["date_of_birth"],
+                    LoginPassword = (string)datarow["hashed_password"],
+                    DateOfBirth = (DateTime)datarow["date_of_birth"],
                     PhoneNumber = (int)datarow["phone_number"],
                     Email = (string)datarow["email"],
-                    Role = (EmployeeRole)datarow["role"]
+                    role = (string)datarow["role"]
                 };
 
                 employees.Add(employee);
@@ -39,14 +40,45 @@ namespace ChapeauDAL
             return employees;
         }
 
-        public List<Employee> GetEmployeeById(int id)
+        public Employee GetEmployeeByUsername(string username)
         {
-            string query = "SELECT id, first_name, last_name, login_username, login_password, date_of_birth, phone_number, email, role FROM [employee] WHERE id = @id";
-            // to prevent sql injection
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@id", id);
+            string query = "SELECT id, first_name, last_name, login_username, hashed_password, date_of_birth, phone_number, email, role FROM [employee] WHERE login_username = @Username";
+            // prevents from SQL injection
+            SqlParameter[] sqlParameters = new SqlParameter[1]
+            {
+                new SqlParameter("@Username", username)
+            };
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+
+            // if no records found based on the username - user with given username doesn't exist
+            if (dataTable.Rows.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return ReadEmployee(dataTable);
+            }
+        }
+
+        private Employee ReadEmployee(DataTable dataTable)
+        {
+            DataRow datarow = dataTable.Rows[0];
+            Employee employee = new Employee()
+            {
+                Id = (int)datarow["id"],
+                FirstName = (string)datarow["first_name"],
+                LastName = (string)datarow["last_name"],
+                LoginUsername = (string)datarow["login_username"],
+                LoginPassword = (string)datarow["hashed_password"],
+                DateOfBirth = (DateTime)datarow["date_of_birth"],
+                PhoneNumber = (int)datarow["phone_number"],
+                Email = (string)datarow["email"],
+                role = (string)datarow["role"]
+            };
+
+            return employee;
         }
     }
 }

@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ChapeauUI
 {
-    public partial class KitchenForm : Form
+    public partial class KitchenViewUI : Form
     {
-        public KitchenForm()
+        public KitchenViewUI()
         {
             InitializeComponent();
 
