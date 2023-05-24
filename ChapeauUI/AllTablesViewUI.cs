@@ -1,4 +1,6 @@
-﻿using SomerenService;
+﻿using ChapeauModel;
+using ChapeauService;
+using SomerenService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +17,24 @@ namespace ChapeauUI
     {
         public AllTablesViewUI()
         {
+            InitializeComponent();
+        }
+
+        // event handler, runs from button properties > events > Click
+        private void TableButton_Click(object sender, EventArgs e)
+        {
             try
             {
-                InitializeComponent();
+                // Define active form (AllTablesViewUI) and hide it
+                Form activeForm = ActiveForm;
+                activeForm.Hide();
 
-                // further code
+                // Show new form, which needs to be open
+                TableStatusUI newForm = new TableStatusUI();
+                newForm.ShowDialog();
+
+                // Close previous form (AllTablesViewUI), so it's not running in the background
+                activeForm.Close();
             }
             catch (Exception error)
             {

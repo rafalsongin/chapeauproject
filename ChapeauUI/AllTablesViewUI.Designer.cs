@@ -97,6 +97,7 @@
             buttonTable1.TabIndex = 12;
             buttonTable1.Text = "1";
             buttonTable1.UseVisualStyleBackColor = false;
+            buttonTable1.Click += TableButton_Click;
             // 
             // buttonTable3
             // 
@@ -109,6 +110,7 @@
             buttonTable3.TabIndex = 12;
             buttonTable3.Text = "3";
             buttonTable3.UseVisualStyleBackColor = false;
+            buttonTable3.Click += TableButton_Click;
             // 
             // buttonTable5
             // 
@@ -121,6 +123,7 @@
             buttonTable5.TabIndex = 12;
             buttonTable5.Text = "5";
             buttonTable5.UseVisualStyleBackColor = false;
+            buttonTable5.Click += TableButton_Click;
             // 
             // buttonTable7
             // 
@@ -133,6 +136,7 @@
             buttonTable7.TabIndex = 12;
             buttonTable7.Text = "7";
             buttonTable7.UseVisualStyleBackColor = false;
+            buttonTable7.Click += TableButton_Click;
             // 
             // buttonTable9
             // 
@@ -145,6 +149,7 @@
             buttonTable9.TabIndex = 12;
             buttonTable9.Text = "9";
             buttonTable9.UseVisualStyleBackColor = false;
+            buttonTable9.Click += TableButton_Click;
             // 
             // buttonTable2
             // 
@@ -157,6 +162,7 @@
             buttonTable2.TabIndex = 12;
             buttonTable2.Text = "2";
             buttonTable2.UseVisualStyleBackColor = false;
+            buttonTable2.Click += TableButton_Click;
             // 
             // buttonTable4
             // 
@@ -169,6 +175,7 @@
             buttonTable4.TabIndex = 12;
             buttonTable4.Text = "4";
             buttonTable4.UseVisualStyleBackColor = false;
+            buttonTable4.Click += TableButton_Click;
             // 
             // buttonTable6
             // 
@@ -181,6 +188,7 @@
             buttonTable6.TabIndex = 12;
             buttonTable6.Text = "6";
             buttonTable6.UseVisualStyleBackColor = false;
+            buttonTable6.Click += TableButton_Click;
             // 
             // buttonTable8
             // 
@@ -193,6 +201,7 @@
             buttonTable8.TabIndex = 12;
             buttonTable8.Text = "8";
             buttonTable8.UseVisualStyleBackColor = false;
+            buttonTable8.Click += TableButton_Click;
             // 
             // buttonTable10
             // 
@@ -205,6 +214,7 @@
             buttonTable10.TabIndex = 12;
             buttonTable10.Text = "10";
             buttonTable10.UseVisualStyleBackColor = false;
+            buttonTable10.Click += TableButton_Click;
             // 
             // panelLegendFree
             // 
