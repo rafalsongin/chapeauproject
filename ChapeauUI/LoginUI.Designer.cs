@@ -61,6 +61,7 @@
             labelForgotPassword.Size = new Size(120, 20);
             labelForgotPassword.TabIndex = 12;
             labelForgotPassword.Text = "Forgot password";
+            labelForgotPassword.Click += labelForgotPassword_Click;
             // 
             // buttonLogin
             // 
