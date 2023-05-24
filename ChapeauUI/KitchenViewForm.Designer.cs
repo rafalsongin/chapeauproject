@@ -60,7 +60,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkOrange;
+            panel1.BackColor = Color.FromArgb(255, 179, 71);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(47, 78);
             panel1.Name = "panel1";
@@ -80,7 +80,7 @@
             // 
             // panel2
             // 
-            panel2.BackColor = Color.DarkOrange;
+            panel2.BackColor = Color.FromArgb(255, 179, 71);
             panel2.Controls.Add(employeeNameLabel);
             panel2.Location = new Point(1090, 2);
             panel2.Margin = new Padding(4, 5, 4, 5);
@@ -126,7 +126,7 @@
             // 
             // panel4
             // 
-            panel4.BackColor = Color.DarkOrange;
+            panel4.BackColor = Color.FromArgb(255, 179, 71);
             panel4.Controls.Add(label6);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(label5);
@@ -212,7 +212,7 @@
             // 
             // panel5
             // 
-            panel5.BackColor = Color.DarkOrange;
+            panel5.BackColor = Color.FromArgb(255, 179, 71);
             panel5.Controls.Add(label7);
             panel5.Location = new Point(851, 377);
             panel5.Margin = new Padding(4, 5, 4, 5);
@@ -246,7 +246,7 @@
             // 
             // preparedButton
             // 
-            preparedButton.BackColor = Color.DarkOrange;
+            preparedButton.BackColor = Color.FromArgb(255, 179, 71);
             preparedButton.Location = new Point(979, 295);
             preparedButton.Margin = new Padding(4, 5, 4, 5);
             preparedButton.Name = "preparedButton";
@@ -258,7 +258,7 @@
             // 
             // servedButton
             // 
-            servedButton.BackColor = Color.YellowGreen;
+            servedButton.BackColor = Color.FromArgb(138, 210, 176);
             servedButton.Location = new Point(1094, 295);
             servedButton.Margin = new Padding(0);
             servedButton.Name = "servedButton";

@@ -40,12 +40,12 @@ namespace ChapeauUI
             foreach (Order order in orders)
             {
                 ListViewItem li = new ListViewItem(order.Id.ToString());
-                
+
 
 
 
                 li.Tag = order;
-                
+
                 li.SubItems.Add(order.Status.ToString());
                 ordersListView.Items.Add(li);
             }
