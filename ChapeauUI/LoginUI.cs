@@ -67,15 +67,15 @@ namespace ChapeauUI
                 AllTablesViewUI newForm = new AllTablesViewUI();
                 OpenUI(newForm);
             }
-            else if (employee.Role == EmployeeRole.Chef)
+            else if (employee.Role == EmployeeRole.Chef || employee.Role == EmployeeRole.Bartender)
             {
-                BarOrKitchenViewUI newForm = new BarOrKitchenViewUI();
+                BarOrKitchenViewUI newForm = new BarOrKitchenViewUI(employee);
                 OpenUI(newForm);
             }
-            else if (employee.Role == EmployeeRole.Bartender)
+           /* else if (employee.Role == EmployeeRole.Bartender)
             {
                 // add barViewUI
-            }
+            }*/
             else if (employee.Role == EmployeeRole.Manager)
             {
                 // no manager UI
