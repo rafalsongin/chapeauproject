@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarOrKitchenViewUI));
             panel1 = new Panel();
-            label1 = new Label();
+            typeOfViewLabel = new Label();
             panel2 = new Panel();
             employeeNameLabel = new Label();
             ordersListView = new ListView();
@@ -64,31 +64,31 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(255, 179, 71);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(typeOfViewLabel);
             panel1.Location = new Point(47, 78);
             panel1.Name = "panel1";
             panel1.Size = new Size(1170, 103);
             panel1.TabIndex = 0;
             // 
-            // label1
+            // typeOfViewLabel
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(444, 15);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(275, 60);
-            label1.TabIndex = 0;
-            label1.Text = "Kitchen View";
+            typeOfViewLabel.AutoSize = true;
+            typeOfViewLabel.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
+            typeOfViewLabel.Location = new Point(444, 15);
+            typeOfViewLabel.Margin = new Padding(4, 0, 4, 0);
+            typeOfViewLabel.Name = "typeOfViewLabel";
+            typeOfViewLabel.Size = new Size(275, 60);
+            typeOfViewLabel.TabIndex = 0;
+            typeOfViewLabel.Text = "Kitchen View";
             // 
             // panel2
             // 
             panel2.BackColor = Color.FromArgb(255, 179, 71);
             panel2.Controls.Add(employeeNameLabel);
-            panel2.Location = new Point(1090, 2);
+            panel2.Location = new Point(1073, 2);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(127, 50);
+            panel2.Size = new Size(144, 50);
             panel2.TabIndex = 1;
             // 
             // employeeNameLabel
@@ -339,7 +339,7 @@
         private Panel panel1;
         private Panel panel2;
         private Label employeeNameLabel;
-        private Label label1;
+        private Label typeOfViewLabel;
         private ListView ordersListView;
         private Panel panel4;
         private Label label4;

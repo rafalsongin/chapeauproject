@@ -15,22 +15,40 @@ namespace ChapeauUI
 {
     public partial class BarOrKitchenViewUI : Form
     {
-        public BarOrKitchenViewUI()
+        Employee employee;
+        public BarOrKitchenViewUI(Employee employee)
         {
             InitializeComponent();
+            this.employee = employee;
         }
 
         // get the stuff from Service layer methods
         private List<ItemsToPrepare> GetItems()
         {
             ItemsToPrepareService items = new ItemsToPrepareService();
-            List<ItemsToPrepare> itemsList = items.GetItemsDishes();
+            List<ItemsToPrepare> itemsList = new List<ItemsToPrepare>();
+
+            if (employee.Role == EmployeeRole.Chef)
+            {
+                itemsList = items.GetItemsDishes();
+            }
+            else
+            {
+                itemsList = items.GetItemsDrinks();
+            }
             return itemsList;
         }
 
         protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
         {
             DisplayOrders(GetItems());
+            employeeNameLabel.Text = employee.FirstName;
+
+            if (employee.Role == EmployeeRole.Bartender)
+            {
+                typeOfViewLabel.Text = "Bar View";
+            }
+
         }
 
         private void DisplayOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
@@ -46,7 +64,7 @@ namespace ChapeauUI
             }
         }
 
-   // buttons --------------
+        // buttons --------------
 
         ContainsTableDataService ContainsTableDataService = new ContainsTableDataService();
         private void InPreparationButton_Click(object sender, EventArgs e)
@@ -75,9 +93,9 @@ namespace ChapeauUI
             SelectedOrderListView.Items.Clear();
             ordersListView.Items.Clear();
             DisplayOrders(GetItems());
-            
+
         }
-         
+
         // -----------
         private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)            // used to show the picked order in the other list
         {
@@ -91,7 +109,7 @@ namespace ChapeauUI
         {
             ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
 
-            ListViewItem li = new ListViewItem(item.OrderId.ToString());  
+            ListViewItem li = new ListViewItem(item.OrderId.ToString());
             li.SubItems.Add(item.Status.ToString());
             SelectedOrderListView.Items.Add(li);
         }
