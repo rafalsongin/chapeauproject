@@ -13,9 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ChapeauUI
 {
-    public partial class KitchenViewUI : Form
+    public partial class BarOrKitchenViewUI : Form
     {
-        public KitchenViewUI()
+        public BarOrKitchenViewUI()
         {
             InitializeComponent();
 
@@ -23,30 +23,27 @@ namespace ChapeauUI
         }
 
         // get the stuff from Service layer methods
-        private List<Order> GetOrders()
+        private List<ItemsToPrepare> GetItems()
         {
-            OrderService orders = new OrderService();
-            List<Order> ordersList = orders.GetOrders();
-            return ordersList;
+            ItemsToPrepareService items = new ItemsToPrepareService();
+            List<ItemsToPrepare> itemsList = items.GetItems();
+            return itemsList;
         }
 
         protected void LoadForm(object sender, EventArgs e)
         {
-            DisplayOrders(GetOrders());
+            DisplayOrders(GetItems());
         }
 
-        private void DisplayOrders(List<Order> orders)
+        private void DisplayOrders(List<ItemsToPrepare> items)
         {
-            foreach (Order order in orders)
+            foreach (ItemsToPrepare item in items)
             {
-                ListViewItem li = new ListViewItem(order.Id.ToString());
-                
-
-
-
-                li.Tag = order;
-                
-                li.SubItems.Add(order.Status.ToString());
+                ListViewItem li = new ListViewItem(item.OrderId.ToString());
+                li.SubItems.Add(item.Covers.ToString());
+                li.SubItems.Add(item.Count.ToString());
+                li.SubItems.Add(item.Name);
+                li.Tag = item;
                 ordersListView.Items.Add(li);
             }
         }

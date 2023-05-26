@@ -9,26 +9,25 @@ using System.Threading.Tasks;
 
 namespace ChapeauDAL
 {
-    public class ContainsTableDataDao : BaseDao
+    public class ItemsToPrepareDao : BaseDao
     {
         string statusString;
         OrderStatus status = new OrderStatus();
-        public List<ContainsTableData> GetAllData()
+        public List<ItemsToPrepare> GetAllItemsToPrepare()
         {
             // sql query
-            string query = "SELECT order_id, menu_item_id,status FROM [contains]";
+            string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_item.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_item.[menu_id]\r\n\tFROM [contains]\r\n\tjoin [menu_item] on menu_item.id = [contains].menu_item_id\r\n\tjoin [order] on [contains].order_id = [order].id\r\n\tjoin [table] on [table].id = [order].table_id\r\n\tGROUP BY [order_id],menu_item.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_item.[menu_id]\r\n\tHAVING [contains].[status] <> 'Served';";
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<ContainsTableData> ReadTables(DataTable dataTable)
+        private List<ItemsToPrepare> ReadTables(DataTable dataTable)
         {
-            List<ContainsTableData> datas = new List<ContainsTableData>();
+            List<ItemsToPrepare> itemsToPrepare = new List<ItemsToPrepare>();
 
             foreach (DataRow datarow in dataTable.Rows)
             {
-
                 statusString = (string)datarow["status"];
 
                 if (statusString == "Pending")
@@ -48,17 +47,21 @@ namespace ChapeauDAL
                     status = OrderStatus.Served;
                 }
 
-
-                ContainsTableData data = new ContainsTableData()
+                ItemsToPrepare item = new ItemsToPrepare()
                 {
                     OrderId = (int)datarow["order_id"],
+                    Count = (int)datarow["COUNT"],
+                    Name = (string)datarow["name"],
+                    TableId = (int)datarow["table_id"],
+                    Status = status,
                     MenuItemId = (int)datarow["menu_item_id"],
-                    Status = status
+                    Covers = (int)datarow["covers"],
+                    MenuId = (int)datarow["menu_id"]                   
                 };
 
-                datas.Add(data);
+                itemsToPrepare.Add(item);
             }
-            return datas;
+            return itemsToPrepare;
         }
     }
 }
