@@ -17,11 +17,36 @@ namespace ChapeauService
             ItemsToPrepareDb = new ItemsToPrepareDao();
         }
 
-        public List<ItemsToPrepare> GetItems()
+        public List<ItemsToPrepare> GetItemsDishes()
         {
             List<ItemsToPrepare> items = ItemsToPrepareDb.GetAllItemsToPrepare();
+            List<ItemsToPrepare> dishes = new List<ItemsToPrepare>() ;
 
-            return items;
+            foreach (ItemsToPrepare item in items)
+            {
+                if (item.MenuId != 42344)
+                {
+                    dishes.Add(item);
+                }
+            }
+
+            return dishes;
+        }
+
+        public List<ItemsToPrepare> GetItemsDrinks()
+        {
+            List<ItemsToPrepare> items = ItemsToPrepareDb.GetAllItemsToPrepare();
+            List<ItemsToPrepare> drinks = new List<ItemsToPrepare>();
+
+            foreach (ItemsToPrepare item in items)
+            {
+                if (item.MenuId == 42344)
+                {
+                    drinks.Add(item);
+                }
+            }
+
+            return drinks;
         }
     }
 }
