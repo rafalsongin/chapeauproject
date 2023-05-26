@@ -1,6 +1,6 @@
 ﻿namespace ChapeauUI
 {
-    partial class KitchenViewUI
+    partial class BarOrKitchenViewUI
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KitchenViewUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BarOrKitchenViewUI));
             panel1 = new Panel();
             label1 = new Label();
             panel2 = new Panel();
             employeeNameLabel = new Label();
             ordersListView = new ListView();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
+            orderID = new ColumnHeader();
+            orderNumber = new ColumnHeader();
+            count = new ColumnHeader();
+            Description = new ColumnHeader();
             panel4 = new Panel();
             label6 = new Label();
             label4 = new Label();
@@ -51,6 +53,7 @@
             preparedButton = new Button();
             servedButton = new Button();
             inPreparationButton = new Button();
+            label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -102,8 +105,8 @@
             // ordersListView
             // 
             ordersListView.BackColor = SystemColors.ControlLightLight;
-            ordersListView.Columns.AddRange(new ColumnHeader[] { columnHeader3, columnHeader4 });
-            ordersListView.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            ordersListView.Columns.AddRange(new ColumnHeader[] { orderID, orderNumber, count, Description });
+            ordersListView.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             ordersListView.FullRowSelect = true;
             ordersListView.GridLines = true;
             ordersListView.Location = new Point(47, 270);
@@ -114,15 +117,25 @@
             ordersListView.UseCompatibleStateImageBehavior = false;
             ordersListView.View = View.Details;
             // 
-            // columnHeader3
+            // orderID
             // 
-            columnHeader3.Text = "";
-            columnHeader3.Width = 200;
+            orderID.Text = "";
+            orderID.Width = 110;
             // 
-            // columnHeader4
+            // orderNumber
             // 
-            columnHeader4.Text = "";
-            columnHeader4.Width = 200;
+            orderNumber.Text = "";
+            orderNumber.Width = 110;
+            // 
+            // count
+            // 
+            count.Text = "";
+            count.Width = 130;
+            // 
+            // Description
+            // 
+            Description.Text = "";
+            Description.Width = 450;
             // 
             // panel4
             // 
@@ -132,6 +145,7 @@
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label2);
+            panel4.Controls.Add(label8);
             panel4.Location = new Point(47, 200);
             panel4.Margin = new Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
@@ -151,7 +165,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(51, 18);
+            label4.Location = new Point(13, 18);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(81, 25);
@@ -161,7 +175,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(459, 18);
+            label5.Location = new Point(265, 18);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(60, 25);
@@ -171,17 +185,17 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(221, 18);
+            label3.Location = new Point(136, 10);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(128, 25);
+            label3.Size = new Size(58, 25);
             label3.TabIndex = 6;
-            label3.Text = "Order Number";
+            label3.Text = "Order";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(617, 18);
+            label2.Location = new Point(486, 18);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(102, 25);
@@ -280,7 +294,16 @@
             inPreparationButton.UseVisualStyleBackColor = true;
             inPreparationButton.Click += inPreparationButton_Click;
             // 
-            // KitchenForm
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(126, 35);
+            label8.Name = "label8";
+            label8.Size = new Size(77, 25);
+            label8.TabIndex = 17;
+            label8.Text = "Number";
+            // 
+            // BarOrKitchenViewUI
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -295,7 +318,7 @@
             Controls.Add(ordersListView);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Name = "KitchenForm";
+            Name = "BarOrKitchenViewUI";
             Text = "Form1";
             Load += LoadForm;
             panel1.ResumeLayout(false);
@@ -332,7 +355,10 @@
         private Button preparedButton;
         private Button servedButton;
         private Button inPreparationButton;
-        private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
+        private ColumnHeader orderID;
+        private ColumnHeader orderNumber;
+        private ColumnHeader count;
+        private ColumnHeader Description;
+        private Label label8;
     }
 }

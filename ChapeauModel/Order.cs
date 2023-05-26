@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public int Host { get; set; }
-        public OrderStatus Status { get; set; }
         public DateTime OrderTakenTime { get; set; }
         public string Comments { get; set; }
         public int TableId { get; set; }
