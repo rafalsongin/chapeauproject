@@ -18,5 +18,10 @@ namespace ChapeauService
 
             return datas;
         }
+
+        public void UpdateItemStatus(ItemsToPrepare item)
+        {
+            containsTableDataDao.UpdateItemStatusInDB(item.OrderId,item.MenuItemId,item.Status);
+        }
     }
 }

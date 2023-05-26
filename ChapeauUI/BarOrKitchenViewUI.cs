@@ -18,24 +18,22 @@ namespace ChapeauUI
         public BarOrKitchenViewUI()
         {
             InitializeComponent();
-
-
         }
 
         // get the stuff from Service layer methods
         private List<ItemsToPrepare> GetItems()
         {
             ItemsToPrepareService items = new ItemsToPrepareService();
-            List<ItemsToPrepare> itemsList = items.GetItems();
+            List<ItemsToPrepare> itemsList = items.GetItemsDishes();
             return itemsList;
         }
 
-        protected void LoadForm(object sender, EventArgs e)
+        protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
         {
             DisplayOrders(GetItems());
         }
 
-        private void DisplayOrders(List<ItemsToPrepare> items)
+        private void DisplayOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
         {
             foreach (ItemsToPrepare item in items)
             {
@@ -48,22 +46,54 @@ namespace ChapeauUI
             }
         }
 
+   // buttons --------------
 
-
-        // buttons --------------
-        private void inPreparationButton_Click(object sender, EventArgs e)
+        ContainsTableDataService ContainsTableDataService = new ContainsTableDataService();
+        private void InPreparationButton_Click(object sender, EventArgs e)
         {
-
+            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
+            item.Status = OrderStatus.InPreparation;
+            ContainsTableDataService.UpdateItemStatus(item);
+            SelectedOrderListView.Items.Clear();
+            UpdateListViewOfSelectedOrder();
         }
 
-        private void preparedButton_Click(object sender, EventArgs e)
+        private void PreparedButton_Click(object sender, EventArgs e)
         {
-
+            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
+            item.Status = OrderStatus.Prepared;
+            ContainsTableDataService.UpdateItemStatus(item);
+            SelectedOrderListView.Items.Clear();
+            UpdateListViewOfSelectedOrder();
         }
 
-        private void servedButton_Click(object sender, EventArgs e)
+        private void ServedButton_Click(object sender, EventArgs e)
         {
+            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
+            item.Status = OrderStatus.Served;
+            ContainsTableDataService.UpdateItemStatus(item);
+            SelectedOrderListView.Items.Clear();
+            ordersListView.Items.Clear();
+            DisplayOrders(GetItems());
+            
+        }
+         
+        // -----------
+        private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)            // used to show the picked order in the other list
+        {
+            SelectedOrderListView.Items.Clear();
+            if (ordersListView.SelectedItems.Count == 0)
+                return;
+            UpdateListViewOfSelectedOrder();
+        }
 
+        private void UpdateListViewOfSelectedOrder()    // moving the order to the other listview
+        {
+            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
+
+            ListViewItem li = new ListViewItem(item.OrderId.ToString());  
+            li.SubItems.Add(item.Status.ToString());
+            SelectedOrderListView.Items.Add(li);
         }
     }
 }

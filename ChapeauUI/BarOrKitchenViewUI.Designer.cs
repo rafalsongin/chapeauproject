@@ -44,6 +44,7 @@
             label5 = new Label();
             label3 = new Label();
             label2 = new Label();
+            label8 = new Label();
             pictureBoxChapeauLogo = new PictureBox();
             label7 = new Label();
             panel5 = new Panel();
@@ -53,7 +54,6 @@
             preparedButton = new Button();
             servedButton = new Button();
             inPreparationButton = new Button();
-            label8 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -116,6 +116,7 @@
             ordersListView.TabIndex = 2;
             ordersListView.UseCompatibleStateImageBehavior = false;
             ordersListView.View = View.Details;
+            ordersListView.SelectedIndexChanged += ordersListView_SelectedIndexChanged;
             // 
             // orderID
             // 
@@ -202,6 +203,15 @@
             label2.TabIndex = 5;
             label2.Text = "Description";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(126, 35);
+            label8.Name = "label8";
+            label8.Size = new Size(77, 25);
+            label8.TabIndex = 17;
+            label8.Text = "Number";
+            // 
             // pictureBoxChapeauLogo
             // 
             pictureBoxChapeauLogo.Image = (Image)resources.GetObject("pictureBoxChapeauLogo.Image");
@@ -268,7 +278,7 @@
             preparedButton.TabIndex = 14;
             preparedButton.Text = "Prepared";
             preparedButton.UseVisualStyleBackColor = false;
-            preparedButton.Click += preparedButton_Click;
+            preparedButton.Click += PreparedButton_Click;
             // 
             // servedButton
             // 
@@ -280,7 +290,7 @@
             servedButton.TabIndex = 15;
             servedButton.Text = "Served";
             servedButton.UseVisualStyleBackColor = false;
-            servedButton.Click += servedButton_Click;
+            servedButton.Click += ServedButton_Click;
             // 
             // inPreparationButton
             // 
@@ -292,16 +302,7 @@
             inPreparationButton.TabIndex = 16;
             inPreparationButton.Text = "In preparation";
             inPreparationButton.UseVisualStyleBackColor = true;
-            inPreparationButton.Click += inPreparationButton_Click;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(126, 35);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 25);
-            label8.TabIndex = 17;
-            label8.Text = "Number";
+            inPreparationButton.Click += InPreparationButton_Click;
             // 
             // BarOrKitchenViewUI
             // 
