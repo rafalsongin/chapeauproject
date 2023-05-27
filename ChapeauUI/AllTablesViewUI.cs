@@ -20,6 +20,7 @@ namespace ChapeauUI
             InitializeComponent();
             SetButtonTableTag();
             SetAllButtonsColor();
+            // show actual name of the employee at the top right
         }
 
         // event handler, runs from button properties > events > Click
@@ -56,6 +57,7 @@ namespace ChapeauUI
             activeForm.Close();
         }
 
+        // to pass table number to the TableStatusUI
         private void SetButtonTableTag()
         {
             buttonTable1.Tag = 1;
@@ -94,7 +96,7 @@ namespace ChapeauUI
             }
             else if (table.Status == TableStatus.Ordered)
             {
-                button.BackColor = Color.FromArgb(196, 196, 196);
+                button.BackColor = Color.FromArgb(248, 102, 39);
             }
             else
             {

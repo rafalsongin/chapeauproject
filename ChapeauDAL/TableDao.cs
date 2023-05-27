@@ -44,7 +44,7 @@ namespace ChapeauDAL
             // prevents from SQL injection
             SqlParameter[] sqlParameters = new SqlParameter[1]
             {
-                new SqlParameter("@Id", id)
+                new SqlParameter("@Id", id),
             };
 
             DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
