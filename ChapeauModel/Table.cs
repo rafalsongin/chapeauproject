@@ -11,7 +11,7 @@ namespace ChapeauModel
         {
             get
             {
-                if (status == "Empty")
+                if (status == "Available")
                 {
                     return TableStatus.Available;
                 }

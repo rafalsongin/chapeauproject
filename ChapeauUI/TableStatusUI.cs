@@ -90,6 +90,8 @@ namespace ChapeauUI
                 case TableStatus.Reserved:
                     ButtonSetTableReservedActive();
                     break;
+                case TableStatus.Ordered:
+                    throw new Exception("Table ordered already");
                 default:
                     throw new Exception("TableStatus error!");
             }
