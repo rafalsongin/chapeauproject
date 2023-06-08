@@ -11,9 +11,8 @@ namespace ChapeauDAL
         {
             // sql query
             string query = "SELECT id, status, covers, is_legal_drinking_age FROM [table]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<Table> ReadTables(DataTable dataTable)
@@ -47,9 +46,7 @@ namespace ChapeauDAL
                 new SqlParameter("@Id", id),
             };
 
-            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
-
-            return ReadTable(dataTable);
+            return ReadTable(ExecuteSelectQueryWithParameters(query, sqlParameters));
         }
 
         private Table ReadTable(DataTable dataTable)

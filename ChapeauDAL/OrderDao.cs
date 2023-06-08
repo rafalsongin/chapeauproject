@@ -6,15 +6,11 @@ namespace ChapeauDAL
 {
     public class OrderDao : BaseDao
     {
-       
-      //  string comment;
         public List<Order> GetAllOrders()
         {
-            // sql query
             string query = "SELECT id, host, order_taken_time, comments, table_id, bill_id FROM [order]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
        
         private List<Order> ReadTables(DataTable dataTable)
@@ -23,9 +19,6 @@ namespace ChapeauDAL
 
             foreach (DataRow datarow in dataTable.Rows)
             {
-               
-
-
                 Order order = new Order()
                 {
                     Id = (int)datarow["id"],

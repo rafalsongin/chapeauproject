@@ -8,11 +8,9 @@ namespace ChapeauDAL
     {
         public List<Payment> GetAllPayments()
         {
-            // sql query
             string query = "SELECT id, payment_method, table_id, bill_id FROM [payment]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<Payment> ReadTables(DataTable dataTable)

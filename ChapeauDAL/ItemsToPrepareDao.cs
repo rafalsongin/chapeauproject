@@ -17,9 +17,8 @@ namespace ChapeauDAL
         {
             // sql query
             string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_item.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_item.[menu_id]\r\n\tFROM [contains]\r\n\tjoin [menu_item] on menu_item.id = [contains].menu_item_id\r\n\tjoin [order] on [contains].order_id = [order].id\r\n\tjoin [table] on [table].id = [order].table_id\r\n\tGROUP BY [order_id],menu_item.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_item.[menu_id]\r\n\tHAVING [contains].[status] <> 'Served';";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<ItemsToPrepare> ReadTables(DataTable dataTable)

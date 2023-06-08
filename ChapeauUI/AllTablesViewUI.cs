@@ -17,12 +17,16 @@ namespace ChapeauUI
     {
         private const int ButtonWidth = 85;
         private const int ButtonHeight = 60;
-        private const int DefaultButtonLocation_Y = 120;
+        private const int ButtonLocation_Y = 120;
+        private const int ButtonLocation_X = 75;
+        private const int ButtonLocationRow1_X = 75;
+        private const int ButtonLocationRow2_X = 245;
         private const int Increase100Px = 100;
         private const int AllTables = 10;
         private const int MiddleTable = AllTables / 2; 
-        private int button_x = 75;
-        private int button_y = DefaultButtonLocation_Y;
+
+        private int button_x = ButtonLocation_X;
+        private int button_y = ButtonLocation_Y;
 
         private Employee LoggedInEmployee { get; set; }
         private List<Table> Tables { get; set; }
@@ -139,11 +143,11 @@ namespace ChapeauUI
             button.Click += TableButton_Click;
 
             // next button position is determined
-            if (table.Id % 2 == 1)
+            if (table.Id % 2 == 1) // if button is 1, 3, 5, 7, 9 - then create next button in row 2, same column
             {
                 NextColumn();
             }
-            else
+            else // if button is 2, 4, 6, 8, 10 - then create next button in row 1, column 1
             {
                 NextRow();
             }
@@ -155,12 +159,12 @@ namespace ChapeauUI
 
         private void NextColumn()
         {
-            button_x += 170; 
+            button_x = ButtonLocationRow2_X; 
         }        
         
         private void NextRow()
         {
-            button_x = 75; // row 1 x coordinates (add const) - reset to first column
+            button_x = ButtonLocationRow1_X;
             button_y += Increase100Px;
         }
 
