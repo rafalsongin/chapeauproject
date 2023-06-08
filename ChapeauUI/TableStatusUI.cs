@@ -16,14 +16,17 @@ namespace ChapeauUI
     public partial class TableStatusUI : Form
     {
         private Table Table { get; set; }
+        private Employee LoggedInEmployee { get; set; }
 
-        public TableStatusUI(int tableId)
+        public TableStatusUI(Table table, Employee employee)
         {
             try
             {
+                LoggedInEmployee = employee;
+
+                Table = table;
                 InitializeComponent();
-                Table = GetTable(tableId);
-                SetActiveTableStatusVisual(Table.Id) ;
+                SetActiveTableStatusVisual(Table.Id);
                 SetTableHeadingNumber();
             }
             catch (Exception error)
@@ -60,7 +63,7 @@ namespace ChapeauUI
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            AllTablesViewUI goBackForm = new AllTablesViewUI();
+            AllTablesViewUI goBackForm = new AllTablesViewUI(LoggedInEmployee);
             OpenUI(goBackForm);
         }
 
@@ -135,7 +138,7 @@ namespace ChapeauUI
 
             SetButtonActive(buttonSetTableFree);
             SetButtonUnactive(buttonSetTableOccupied);
-            SetButtonUnactive(buttonSetTableReserved); 
+            SetButtonUnactive(buttonSetTableReserved);
         }
 
         private void ButtonSetTableOccupiedActive()
@@ -149,7 +152,7 @@ namespace ChapeauUI
         }
 
         private void ButtonSetTableReservedActive()
-        {   
+        {
             Table.status = TableStatus.Reserved.ToString();
             ChangeTableStatus(TableStatus.Reserved);
 
