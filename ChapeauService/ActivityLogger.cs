@@ -6,12 +6,12 @@ using System.IO;
 
 namespace SomerenService
 {
-    public class ErrorLogger
+    public class ActivityLogger
     {
-        // ErrorLog.txt file is in "bin\Debug\net6.0-windows" folder
-        private string filename = "ErrorLog.txt";
+        // ActivityLog.txt file is in "bin\Debug\net6.0-windows" folder
+        private string filename = "ActivityLog.txt";
 
-        public ErrorLogger(string message)
+        public ActivityLogger(string message)
         {
             StreamWriter writer = new StreamWriter(filename, true);
 
