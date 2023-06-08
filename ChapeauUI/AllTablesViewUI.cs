@@ -55,7 +55,6 @@ namespace ChapeauUI
 
                 // table - button table which was clicked, + logged in employee to track the name
                 TableStatusUI newForm = new TableStatusUI(table, LoggedInEmployee);
-
                 OpenUI(newForm);
             }
             catch (Exception error)
