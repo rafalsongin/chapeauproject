@@ -147,7 +147,7 @@ namespace ChapeauUI
             {
                 NextRow();
             }
-            s
+            
             SetButtonColorByStatus(button, table);
 
             return button;
