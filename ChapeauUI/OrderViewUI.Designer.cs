@@ -39,6 +39,7 @@
             MinimumSize = new Size(414, 736);
             Name = "OrderViewUI";
             Text = "OrderViewUI";
+            Load += OrderViewUI_Load;
             ResumeLayout(false);
         }
 

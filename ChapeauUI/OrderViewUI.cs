@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChapeauModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,14 @@ namespace ChapeauUI
 {
     public partial class OrderViewUI : Form
     {
-        public OrderViewUI()
+        public OrderViewUI(Table table)
         {
             InitializeComponent();
+        }
+
+        private void OrderViewUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
