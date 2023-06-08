@@ -112,6 +112,11 @@ namespace ChapeauUI
                 case TableStatus.Reserved:
                     SetReservedButtonActive();
                     break;
+                case TableStatus.Ordered:
+                    SetButtonUnactive(buttonAvailable);
+                    SetButtonUnactive(buttonOccupied);
+                    SetButtonUnactive(buttonReserved);
+                    break;
                 default:
                     throw new Exception("TableStatus error!");
             }
