@@ -115,9 +115,8 @@ namespace ChapeauUI
                     SetReservedButtonActive();
                     break;
                 case TableStatus.Ordered:
-                    SetButtonUnactive(buttonAvailable);
-                    SetButtonUnactive(buttonOccupied);
-                    SetButtonUnactive(buttonReserved);
+                    OrderViewUI newForm = new OrderViewUI();
+                    OpenUI(newForm);
                     break;
                 default:
                     throw new Exception("TableStatus error!");
