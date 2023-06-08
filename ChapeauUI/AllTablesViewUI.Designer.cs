@@ -84,7 +84,7 @@
             labelName.Name = "labelName";
             labelName.Size = new Size(45, 20);
             labelName.TabIndex = 0;
-            labelName.Text = "Rafal";
+            labelName.Text = "Name";
             // 
             // buttonTable1
             // 

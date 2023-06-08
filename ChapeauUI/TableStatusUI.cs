@@ -23,7 +23,6 @@ namespace ChapeauUI
             {
                 InitializeComponent();
                 Table = GetTable(tableId);
-
                 SetActiveTableStatusVisual(Table.Id) ;
                 SetTableHeadingNumber();
             }

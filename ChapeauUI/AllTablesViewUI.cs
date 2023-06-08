@@ -15,13 +15,33 @@ namespace ChapeauUI
 {
     public partial class AllTablesViewUI : Form
     {
+        private const int ButtonWidth = 85;
+        private const int ButtonHeight = 60;
+        private int button_x = 75;
+        private int button_y = 130;
+
+        private Employee LoggedInEmployee { get; set; }
+        private List<Table> Tables { get; set; }
+
         public AllTablesViewUI()
         {
+
+        }
+
+        public AllTablesViewUI(Employee employee)
+        {
+            LoggedInEmployee = employee;
+
+            TableService tableService = new TableService();
+            Tables = tableService.GetAllTables();
+
             InitializeComponent();
             SetButtonTableTag();
-            SetAllButtonsColor();
-            // show actual name of the employee at the top right
+            CreateAllButtons();
+            DisplayEmployeeName();
         }
+
+        
 
         // event handler, runs from button properties > events > Click
         private void TableButton_Click(object sender, EventArgs e)
@@ -72,11 +92,8 @@ namespace ChapeauUI
             buttonTable10.Tag = 10;
         }
 
-        private void SetButtonColorByStatus(Button button, int buttonNumber)
+        private void SetButtonColorByStatus(Button button, Table table)
         {
-            TableService tableService = new TableService();
-            Table table = tableService.GetTableById(buttonNumber);
-
             // Available - 138, 210, 176
             // Occupied - 255, 179, 71
             // Reserved - 196, 196, 196
@@ -104,10 +121,14 @@ namespace ChapeauUI
             }
         }
 
-        private void SetAllButtonsColor()
+        private void CreateAllButtons()
         {
-            SetButtonColorByStatus(buttonTable1, 1);
-            SetButtonColorByStatus(buttonTable2, 2);
+            foreach (Table table in Tables)
+            {
+                CreateButtonForTable(table);
+            }
+
+            /*SetButtonColorByStatus(buttonTable2, 2);
             SetButtonColorByStatus(buttonTable3, 3);
             SetButtonColorByStatus(buttonTable4, 4);
             SetButtonColorByStatus(buttonTable5, 5);
@@ -115,7 +136,38 @@ namespace ChapeauUI
             SetButtonColorByStatus(buttonTable7, 7);
             SetButtonColorByStatus(buttonTable8, 8);
             SetButtonColorByStatus(buttonTable9, 9);
-            SetButtonColorByStatus(buttonTable10, 10);
+            SetButtonColorByStatus(buttonTable10, 10);*/
+        }
+
+        private Button CreateButtonForTable(Table table)
+        {
+            Button button = new Button();
+            this.Controls.Add(button);
+            button.Text = table.Id.ToString();
+            button.Location = new Point(button_x, button_y);
+            button.Size = new Size(ButtonWidth, ButtonHeight);
+
+            if (table.Id == 5)
+            {
+                SetButtonLocationToRow2();
+            }
+
+            button_y += 110;
+
+            SetButtonColorByStatus(button, table);
+
+            return button;
+        }
+
+        private void SetButtonLocationToRow2()
+        {
+            button_x += 170;
+            button_y = 130;
+        }
+
+        private void DisplayEmployeeName()
+        {
+            labelName.Text = LoggedInEmployee.FirstName;
         }
     }
 }

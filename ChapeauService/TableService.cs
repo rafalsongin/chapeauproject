@@ -25,6 +25,13 @@ namespace ChapeauService
 
             return table;
         }
+
+        public List<Table> GetAllTables()
+        {
+            List<Table> tables = tableDb.GetAllTables();
+
+            return tables;
+        }
         
         public void ChangeTableStatus(Table table)
         {
