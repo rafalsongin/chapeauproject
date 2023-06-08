@@ -40,6 +40,7 @@
             labelLegendOccupied = new Label();
             labelLegendReserved = new Label();
             labelLegendOrdered = new Label();
+            buttonLogout = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
             panelNameBackground.SuspendLayout();
             SuspendLayout();
@@ -72,9 +73,9 @@
             labelName.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Bold, GraphicsUnit.Point);
             labelName.Location = new Point(22, 3);
             labelName.Name = "labelName";
-            labelName.Size = new Size(51, 20);
+            labelName.Size = new Size(60, 20);
             labelName.TabIndex = 0;
-            labelName.Text = "Name";
+            labelName.Text = "{name}";
             // 
             // panelLegendFree
             // 
@@ -148,11 +149,25 @@
             labelLegendOrdered.TabIndex = 14;
             labelLegendOrdered.Text = "ORDERED";
             // 
+            // buttonLogout
+            // 
+            buttonLogout.BackColor = Color.FromArgb(201, 201, 201);
+            buttonLogout.FlatStyle = FlatStyle.Flat;
+            buttonLogout.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogout.Location = new Point(278, 56);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(92, 30);
+            buttonLogout.TabIndex = 15;
+            buttonLogout.Text = "Logout";
+            buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
+            // 
             // AllTablesViewUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(398, 697);
+            Controls.Add(buttonLogout);
             Controls.Add(labelLegendOrdered);
             Controls.Add(labelLegendReserved);
             Controls.Add(labelLegendOccupied);
@@ -189,5 +204,6 @@
         private Label labelLegendOccupied;
         private Label labelLegendReserved;
         private Label labelLegendOrdered;
+        private Button buttonLogout;
     }
 }

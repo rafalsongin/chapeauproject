@@ -22,8 +22,6 @@ namespace ChapeauUI
         private const int ButtonLocationRow1_X = 75;
         private const int ButtonLocationRow2_X = 245;
         private const int Increase100Px = 100;
-        private const int AllTables = 10;
-        private const int MiddleTable = AllTables / 2; 
 
         private int button_x = ButtonLocation_X;
         private int button_y = ButtonLocation_Y;
@@ -63,9 +61,7 @@ namespace ChapeauUI
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-
-                ErrorLogger errorLogger = new ErrorLogger();
-                errorLogger.LogError(error.Message);
+                new ErrorLogger(error.Message);
             }
         }
 
@@ -138,7 +134,7 @@ namespace ChapeauUI
 
             // connect button with the table
             button.Tag = table;
-            
+
             // assign event handler to a button
             button.Click += TableButton_Click;
 
@@ -151,7 +147,7 @@ namespace ChapeauUI
             {
                 NextRow();
             }
-            
+
             SetButtonColorByStatus(button, table);
 
             return button;
@@ -159,9 +155,9 @@ namespace ChapeauUI
 
         private void NextColumn()
         {
-            button_x = ButtonLocationRow2_X; 
-        }        
-        
+            button_x = ButtonLocationRow2_X;
+        }
+
         private void NextRow()
         {
             button_x = ButtonLocationRow1_X;
@@ -171,6 +167,13 @@ namespace ChapeauUI
         private void DisplayEmployeeName()
         {
             labelName.Text = LoggedInEmployee.FirstName;
+        }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} logged out from application!");
+            LoginUI newForm = new LoginUI();
+            OpenUI(newForm);
         }
     }
 }

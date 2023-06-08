@@ -29,9 +29,7 @@ namespace ChapeauUI
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-
-                ErrorLogger errorLogger = new ErrorLogger();
-                errorLogger.LogError(error.Message);
+                new ErrorLogger(error.Message);
             }
         }
 
@@ -51,6 +49,7 @@ namespace ChapeauUI
                 EmployeeService employeeService = new EmployeeService();
                 Employee employee = employeeService.GetEmployeeByUsername(inputUsername);
 
+                new ActivityLogger($"{employee.FirstName} {employee.LastName} logged in into {employee.Role} application!");
                 OpenFormBasedOnTheRole(employee);
             }
             else

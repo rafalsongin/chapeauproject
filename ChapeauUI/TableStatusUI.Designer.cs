@@ -29,61 +29,62 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableStatusUI));
-            buttonSetTableFree = new Button();
-            buttonSetTableOccupied = new Button();
-            buttonSetTableReserved = new Button();
+            buttonAvailable = new Button();
+            buttonOccupied = new Button();
+            buttonReserved = new Button();
             labelTableHeading = new Label();
             buttonGoToTable = new Button();
             buttonBack = new Button();
             panelNameBackground = new Panel();
             labelName = new Label();
             pictureBoxChapeauLogo = new PictureBox();
+            buttonLogout = new Button();
             panelNameBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
             SuspendLayout();
             // 
-            // buttonSetTableFree
+            // buttonAvailable
             // 
-            buttonSetTableFree.BackColor = Color.FromArgb(138, 210, 176);
-            buttonSetTableFree.FlatAppearance.BorderColor = Color.Black;
-            buttonSetTableFree.FlatAppearance.BorderSize = 3;
-            buttonSetTableFree.FlatStyle = FlatStyle.Flat;
-            buttonSetTableFree.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonSetTableFree.Location = new Point(19, 324);
-            buttonSetTableFree.Name = "buttonSetTableFree";
-            buttonSetTableFree.Size = new Size(96, 46);
-            buttonSetTableFree.TabIndex = 15;
-            buttonSetTableFree.Text = "FREE";
-            buttonSetTableFree.UseVisualStyleBackColor = false;
-            buttonSetTableFree.Click += buttonSetTableFree_Click;
+            buttonAvailable.BackColor = Color.FromArgb(138, 210, 176);
+            buttonAvailable.FlatAppearance.BorderColor = Color.Black;
+            buttonAvailable.FlatAppearance.BorderSize = 3;
+            buttonAvailable.FlatStyle = FlatStyle.Flat;
+            buttonAvailable.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonAvailable.Location = new Point(19, 324);
+            buttonAvailable.Name = "buttonAvailable";
+            buttonAvailable.Size = new Size(96, 46);
+            buttonAvailable.TabIndex = 15;
+            buttonAvailable.Text = "FREE";
+            buttonAvailable.UseVisualStyleBackColor = false;
+            buttonAvailable.Click += buttonSetTableFree_Click;
             // 
-            // buttonSetTableOccupied
+            // buttonOccupied
             // 
-            buttonSetTableOccupied.BackColor = Color.FromArgb(255, 179, 71);
-            buttonSetTableOccupied.FlatAppearance.BorderColor = Color.Black;
-            buttonSetTableOccupied.FlatStyle = FlatStyle.Flat;
-            buttonSetTableOccupied.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSetTableOccupied.Location = new Point(151, 324);
-            buttonSetTableOccupied.Name = "buttonSetTableOccupied";
-            buttonSetTableOccupied.Size = new Size(96, 46);
-            buttonSetTableOccupied.TabIndex = 15;
-            buttonSetTableOccupied.Text = "OCCUPIED";
-            buttonSetTableOccupied.UseVisualStyleBackColor = false;
-            buttonSetTableOccupied.Click += buttonSetTableOccupied_Click;
+            buttonOccupied.BackColor = Color.FromArgb(255, 179, 71);
+            buttonOccupied.FlatAppearance.BorderColor = Color.Black;
+            buttonOccupied.FlatStyle = FlatStyle.Flat;
+            buttonOccupied.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonOccupied.Location = new Point(151, 324);
+            buttonOccupied.Name = "buttonOccupied";
+            buttonOccupied.Size = new Size(96, 46);
+            buttonOccupied.TabIndex = 15;
+            buttonOccupied.Text = "OCCUPIED";
+            buttonOccupied.UseVisualStyleBackColor = false;
+            buttonOccupied.Click += buttonSetTableOccupied_Click;
             // 
-            // buttonSetTableReserved
+            // buttonReserved
             // 
-            buttonSetTableReserved.BackColor = Color.FromArgb(196, 196, 196);
-            buttonSetTableReserved.FlatAppearance.BorderColor = Color.Black;
-            buttonSetTableReserved.FlatStyle = FlatStyle.Flat;
-            buttonSetTableReserved.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Regular, GraphicsUnit.Point);
-            buttonSetTableReserved.Location = new Point(279, 324);
-            buttonSetTableReserved.Name = "buttonSetTableReserved";
-            buttonSetTableReserved.Size = new Size(96, 46);
-            buttonSetTableReserved.TabIndex = 15;
-            buttonSetTableReserved.Text = "RESERVED";
-            buttonSetTableReserved.UseVisualStyleBackColor = false;
-            buttonSetTableReserved.Click += buttonSetTableReserved_Click;
+            buttonReserved.BackColor = Color.FromArgb(196, 196, 196);
+            buttonReserved.FlatAppearance.BorderColor = Color.Black;
+            buttonReserved.FlatStyle = FlatStyle.Flat;
+            buttonReserved.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonReserved.Location = new Point(279, 324);
+            buttonReserved.Name = "buttonReserved";
+            buttonReserved.Size = new Size(96, 46);
+            buttonReserved.TabIndex = 15;
+            buttonReserved.Text = "RESERVED";
+            buttonReserved.UseVisualStyleBackColor = false;
+            buttonReserved.Click += buttonSetTableReserved_Click;
             // 
             // labelTableHeading
             // 
@@ -140,9 +141,9 @@
             labelName.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Bold, GraphicsUnit.Point);
             labelName.Location = new Point(22, 3);
             labelName.Name = "labelName";
-            labelName.Size = new Size(51, 20);
+            labelName.Size = new Size(60, 20);
             labelName.TabIndex = 0;
-            labelName.Text = "Name";
+            labelName.Text = "{name}";
             // 
             // pictureBoxChapeauLogo
             // 
@@ -155,19 +156,33 @@
             pictureBoxChapeauLogo.TabIndex = 19;
             pictureBoxChapeauLogo.TabStop = false;
             // 
+            // buttonLogout
+            // 
+            buttonLogout.BackColor = Color.FromArgb(201, 201, 201);
+            buttonLogout.FlatStyle = FlatStyle.Flat;
+            buttonLogout.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonLogout.Location = new Point(278, 56);
+            buttonLogout.Name = "buttonLogout";
+            buttonLogout.Size = new Size(92, 30);
+            buttonLogout.TabIndex = 21;
+            buttonLogout.Text = "Logout";
+            buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
+            // 
             // TableStatusUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(398, 697);
+            Controls.Add(buttonLogout);
             Controls.Add(panelNameBackground);
             Controls.Add(pictureBoxChapeauLogo);
             Controls.Add(buttonBack);
             Controls.Add(buttonGoToTable);
             Controls.Add(labelTableHeading);
-            Controls.Add(buttonSetTableReserved);
-            Controls.Add(buttonSetTableOccupied);
-            Controls.Add(buttonSetTableFree);
+            Controls.Add(buttonReserved);
+            Controls.Add(buttonOccupied);
+            Controls.Add(buttonAvailable);
             Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             MaximumSize = new Size(414, 736);
@@ -182,14 +197,15 @@
         }
 
         #endregion
-        private Button buttonSetTableFree;
-        private Button buttonSetTableOccupied;
-        private Button buttonSetTableReserved;
+        private Button buttonAvailable;
+        private Button buttonOccupied;
+        private Button buttonReserved;
         private Label labelTableHeading;
         private Button buttonGoToTable;
         private Button buttonBack;
         private Panel panelNameBackground;
         private Label labelName;
         private PictureBox pictureBoxChapeauLogo;
+        private Button buttonLogout;
     }
 }
