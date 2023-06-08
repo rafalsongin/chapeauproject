@@ -140,9 +140,9 @@
             labelName.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Bold, GraphicsUnit.Point);
             labelName.Location = new Point(22, 3);
             labelName.Name = "labelName";
-            labelName.Size = new Size(45, 20);
+            labelName.Size = new Size(51, 20);
             labelName.TabIndex = 0;
-            labelName.Text = "Rafal";
+            labelName.Text = "Name";
             // 
             // pictureBoxChapeauLogo
             // 

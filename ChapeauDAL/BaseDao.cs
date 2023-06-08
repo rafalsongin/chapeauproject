@@ -27,8 +27,7 @@ namespace ChapeauDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                throw new Exception(e.Message);
             }
             return conn;
         }
@@ -51,8 +50,7 @@ namespace ChapeauDAL
             }
             catch (Exception e)
             {
-                //Print.ErrorLog(e);
-                throw;
+                throw new Exception(e.Message);
             }
             finally
             {
@@ -75,8 +73,7 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                throw new Exception(e.Message);
             }
             finally
             {
@@ -84,8 +81,8 @@ namespace ChapeauDAL
             }
         }
 
-        /* For Select Queries */
-        protected DataTable ExecuteSelectQuery(string query, params SqlParameter[] sqlParameters)
+        /* For Select Queries with sql parameters */
+        protected DataTable ExecuteSelectQueryWithParameters(string query, params SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
             DataTable dataTable;
@@ -103,8 +100,34 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
-                throw;
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return dataTable;
+        }
+
+        protected DataTable ExecuteSelectQuery(string query)
+        {
+            SqlCommand command = new SqlCommand();
+            DataTable dataTable;
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                command.Connection = OpenConnection();
+                command.CommandText = query;
+                command.ExecuteNonQuery();
+                adapter.SelectCommand = command;
+                adapter.Fill(dataSet);
+                dataTable = dataSet.Tables[0];
+            }
+            catch (SqlException e)
+            {
+                throw new Exception(e.Message);
             }
             finally
             {

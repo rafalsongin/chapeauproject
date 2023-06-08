@@ -15,12 +15,36 @@ namespace ChapeauUI
 {
     public partial class AllTablesViewUI : Form
     {
-        public AllTablesViewUI()
+        private const int ButtonWidth = 85;
+        private const int ButtonHeight = 60;
+        private const int ButtonLocation_Y = 120;
+        private const int ButtonLocation_X = 75;
+        private const int ButtonLocationRow1_X = 75;
+        private const int ButtonLocationRow2_X = 245;
+        private const int Increase100Px = 100;
+        private const int AllTables = 10;
+        private const int MiddleTable = AllTables / 2; 
+
+        private int button_x = ButtonLocation_X;
+        private int button_y = ButtonLocation_Y;
+
+        private Employee LoggedInEmployee { get; set; }
+        private List<Table> Tables { get; set; }
+        private List<Button> Buttons { get; set; }
+
+        public AllTablesViewUI(Employee employee)
         {
+            LoggedInEmployee = employee;
+
+            TableService tableService = new TableService();
+            Tables = tableService.GetAllTables();
+
+            Buttons = new List<Button>();
+
             InitializeComponent();
             SetButtonTableTag();
-            SetAllButtonsColor();
-            // show actual name of the employee at the top right
+            CreateAllButtons();
+            DisplayEmployeeName();
         }
 
         // event handler, runs from button properties > events > Click
@@ -29,9 +53,10 @@ namespace ChapeauUI
             try
             {
                 Button clickedButton = (Button)sender;
-                int buttonNumber = (int)clickedButton.Tag;
+                Table table = (Table)clickedButton.Tag;
 
-                TableStatusUI newForm = new TableStatusUI(buttonNumber); // table number
+                // table - button table which was clicked, + logged in employee to track the name
+                TableStatusUI newForm = new TableStatusUI(table, LoggedInEmployee);
 
                 OpenUI(newForm);
             }
@@ -60,23 +85,14 @@ namespace ChapeauUI
         // to pass table number to the TableStatusUI
         private void SetButtonTableTag()
         {
-            buttonTable1.Tag = 1;
-            buttonTable2.Tag = 2;
-            buttonTable3.Tag = 3;
-            buttonTable4.Tag = 4;
-            buttonTable5.Tag = 5;
-            buttonTable6.Tag = 6;
-            buttonTable7.Tag = 7;
-            buttonTable8.Tag = 8;
-            buttonTable9.Tag = 9;
-            buttonTable10.Tag = 10;
+            for (int i = 0; i < Buttons.Count(); i++)
+            {
+                Buttons[i].Tag = Tables[i].Id;
+            }
         }
 
-        private void SetButtonColorByStatus(Button button, int buttonNumber)
+        private void SetButtonColorByStatus(Button button, Table table)
         {
-            TableService tableService = new TableService();
-            Table table = tableService.GetTableById(buttonNumber);
-
             // Available - 138, 210, 176
             // Occupied - 255, 179, 71
             // Reserved - 196, 196, 196
@@ -104,18 +120,57 @@ namespace ChapeauUI
             }
         }
 
-        private void SetAllButtonsColor()
+        private void CreateAllButtons()
         {
-            SetButtonColorByStatus(buttonTable1, 1);
-            SetButtonColorByStatus(buttonTable2, 2);
-            SetButtonColorByStatus(buttonTable3, 3);
-            SetButtonColorByStatus(buttonTable4, 4);
-            SetButtonColorByStatus(buttonTable5, 5);
-            SetButtonColorByStatus(buttonTable6, 6);
-            SetButtonColorByStatus(buttonTable7, 7);
-            SetButtonColorByStatus(buttonTable8, 8);
-            SetButtonColorByStatus(buttonTable9, 9);
-            SetButtonColorByStatus(buttonTable10, 10);
+            foreach (Table table in Tables)
+            {
+                Buttons.Add(CreateButtonForTable(table));
+            }
+        }
+
+        private Button CreateButtonForTable(Table table)
+        {
+            Button button = new Button();
+            this.Controls.Add(button);
+            button.Text = table.Id.ToString();
+            button.Location = new Point(button_x, button_y);
+            button.Size = new Size(ButtonWidth, ButtonHeight);
+
+            // connect button with the table
+            button.Tag = table;
+            
+            // assign event handler to a button
+            button.Click += TableButton_Click;
+
+            // next button position is determined
+            if (table.Id % 2 == 1) // if button is 1, 3, 5, 7, 9 - then create next button in row 2, same column
+            {
+                NextColumn();
+            }
+            else // if button is 2, 4, 6, 8, 10 - then create next button in row 1, column 1
+            {
+                NextRow();
+            }
+            
+            SetButtonColorByStatus(button, table);
+
+            return button;
+        }
+
+        private void NextColumn()
+        {
+            button_x = ButtonLocationRow2_X; 
+        }        
+        
+        private void NextRow()
+        {
+            button_x = ButtonLocationRow1_X;
+            button_y += Increase100Px;
+        }
+
+        private void DisplayEmployeeName()
+        {
+            labelName.Text = LoggedInEmployee.FirstName;
         }
     }
 }

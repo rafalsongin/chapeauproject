@@ -9,11 +9,9 @@ namespace ChapeauDAL
     {
         public List<Employee> GetAllEmployees()
         {
-            // sql query
             string query =  "SELECT id, first_name, last_name, login_username, hashed_password, date_of_birth, phone_number, email, role FROM [employee]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<Employee> ReadTables(DataTable dataTable)
@@ -49,7 +47,7 @@ namespace ChapeauDAL
                 new SqlParameter("@Username", username)
             };
 
-            DataTable dataTable = ExecuteSelectQuery(query, sqlParameters);
+            DataTable dataTable = ExecuteSelectQueryWithParameters(query, sqlParameters);
 
             // if no records found based on the username - user with given username doesn't exist
             if (dataTable.Rows.Count == 0)

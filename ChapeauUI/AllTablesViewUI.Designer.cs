@@ -32,16 +32,6 @@
             pictureBoxChapeauLogo = new PictureBox();
             panelNameBackground = new Panel();
             labelName = new Label();
-            buttonTable1 = new Button();
-            buttonTable3 = new Button();
-            buttonTable5 = new Button();
-            buttonTable7 = new Button();
-            buttonTable9 = new Button();
-            buttonTable2 = new Button();
-            buttonTable4 = new Button();
-            buttonTable6 = new Button();
-            buttonTable8 = new Button();
-            buttonTable10 = new Button();
             panelLegendFree = new Panel();
             panelStatusOccupied = new Panel();
             panelLegendReserved = new Panel();
@@ -82,139 +72,9 @@
             labelName.Font = new Font("Segoe UI", 11.1428576F, FontStyle.Bold, GraphicsUnit.Point);
             labelName.Location = new Point(22, 3);
             labelName.Name = "labelName";
-            labelName.Size = new Size(45, 20);
+            labelName.Size = new Size(51, 20);
             labelName.TabIndex = 0;
-            labelName.Text = "Rafal";
-            // 
-            // buttonTable1
-            // 
-            buttonTable1.BackColor = Color.FromArgb(248, 102, 39);
-            buttonTable1.FlatStyle = FlatStyle.Popup;
-            buttonTable1.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable1.Location = new Point(76, 120);
-            buttonTable1.Name = "buttonTable1";
-            buttonTable1.Size = new Size(85, 60);
-            buttonTable1.TabIndex = 12;
-            buttonTable1.Text = "1";
-            buttonTable1.UseVisualStyleBackColor = false;
-            buttonTable1.Click += TableButton_Click;
-            // 
-            // buttonTable3
-            // 
-            buttonTable3.BackColor = Color.FromArgb(138, 210, 176);
-            buttonTable3.FlatStyle = FlatStyle.Popup;
-            buttonTable3.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable3.Location = new Point(76, 224);
-            buttonTable3.Name = "buttonTable3";
-            buttonTable3.Size = new Size(85, 60);
-            buttonTable3.TabIndex = 12;
-            buttonTable3.Text = "3";
-            buttonTable3.UseVisualStyleBackColor = false;
-            buttonTable3.Click += TableButton_Click;
-            // 
-            // buttonTable5
-            // 
-            buttonTable5.BackColor = Color.FromArgb(138, 210, 176);
-            buttonTable5.FlatStyle = FlatStyle.Popup;
-            buttonTable5.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable5.Location = new Point(76, 335);
-            buttonTable5.Name = "buttonTable5";
-            buttonTable5.Size = new Size(85, 60);
-            buttonTable5.TabIndex = 12;
-            buttonTable5.Text = "5";
-            buttonTable5.UseVisualStyleBackColor = false;
-            buttonTable5.Click += TableButton_Click;
-            // 
-            // buttonTable7
-            // 
-            buttonTable7.BackColor = Color.FromArgb(248, 102, 39);
-            buttonTable7.FlatStyle = FlatStyle.Popup;
-            buttonTable7.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable7.Location = new Point(76, 443);
-            buttonTable7.Name = "buttonTable7";
-            buttonTable7.Size = new Size(85, 60);
-            buttonTable7.TabIndex = 12;
-            buttonTable7.Text = "7";
-            buttonTable7.UseVisualStyleBackColor = false;
-            buttonTable7.Click += TableButton_Click;
-            // 
-            // buttonTable9
-            // 
-            buttonTable9.BackColor = Color.FromArgb(255, 179, 71);
-            buttonTable9.FlatStyle = FlatStyle.Popup;
-            buttonTable9.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable9.Location = new Point(76, 550);
-            buttonTable9.Name = "buttonTable9";
-            buttonTable9.Size = new Size(85, 60);
-            buttonTable9.TabIndex = 12;
-            buttonTable9.Text = "9";
-            buttonTable9.UseVisualStyleBackColor = false;
-            buttonTable9.Click += TableButton_Click;
-            // 
-            // buttonTable2
-            // 
-            buttonTable2.BackColor = Color.FromArgb(196, 196, 196);
-            buttonTable2.FlatStyle = FlatStyle.Popup;
-            buttonTable2.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable2.Location = new Point(246, 120);
-            buttonTable2.Name = "buttonTable2";
-            buttonTable2.Size = new Size(85, 60);
-            buttonTable2.TabIndex = 12;
-            buttonTable2.Text = "2";
-            buttonTable2.UseVisualStyleBackColor = false;
-            buttonTable2.Click += TableButton_Click;
-            // 
-            // buttonTable4
-            // 
-            buttonTable4.BackColor = Color.FromArgb(248, 102, 39);
-            buttonTable4.FlatStyle = FlatStyle.Popup;
-            buttonTable4.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable4.Location = new Point(246, 224);
-            buttonTable4.Name = "buttonTable4";
-            buttonTable4.Size = new Size(85, 60);
-            buttonTable4.TabIndex = 12;
-            buttonTable4.Text = "4";
-            buttonTable4.UseVisualStyleBackColor = false;
-            buttonTable4.Click += TableButton_Click;
-            // 
-            // buttonTable6
-            // 
-            buttonTable6.BackColor = Color.FromArgb(255, 179, 71);
-            buttonTable6.FlatStyle = FlatStyle.Popup;
-            buttonTable6.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable6.Location = new Point(246, 335);
-            buttonTable6.Name = "buttonTable6";
-            buttonTable6.Size = new Size(85, 60);
-            buttonTable6.TabIndex = 12;
-            buttonTable6.Text = "6";
-            buttonTable6.UseVisualStyleBackColor = false;
-            buttonTable6.Click += TableButton_Click;
-            // 
-            // buttonTable8
-            // 
-            buttonTable8.BackColor = Color.FromArgb(196, 196, 196);
-            buttonTable8.FlatStyle = FlatStyle.Popup;
-            buttonTable8.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable8.Location = new Point(246, 443);
-            buttonTable8.Name = "buttonTable8";
-            buttonTable8.Size = new Size(85, 60);
-            buttonTable8.TabIndex = 12;
-            buttonTable8.Text = "8";
-            buttonTable8.UseVisualStyleBackColor = false;
-            buttonTable8.Click += TableButton_Click;
-            // 
-            // buttonTable10
-            // 
-            buttonTable10.BackColor = Color.FromArgb(248, 102, 39);
-            buttonTable10.FlatStyle = FlatStyle.Popup;
-            buttonTable10.Font = new Font("Segoe UI", 15.8571434F, FontStyle.Bold, GraphicsUnit.Point);
-            buttonTable10.Location = new Point(246, 550);
-            buttonTable10.Name = "buttonTable10";
-            buttonTable10.Size = new Size(85, 60);
-            buttonTable10.TabIndex = 12;
-            buttonTable10.Text = "10";
-            buttonTable10.UseVisualStyleBackColor = false;
-            buttonTable10.Click += TableButton_Click;
+            labelName.Text = "Name";
             // 
             // panelLegendFree
             // 
@@ -301,16 +161,6 @@
             Controls.Add(panelLegendReserved);
             Controls.Add(panelStatusOccupied);
             Controls.Add(panelLegendFree);
-            Controls.Add(buttonTable10);
-            Controls.Add(buttonTable9);
-            Controls.Add(buttonTable8);
-            Controls.Add(buttonTable6);
-            Controls.Add(buttonTable7);
-            Controls.Add(buttonTable4);
-            Controls.Add(buttonTable5);
-            Controls.Add(buttonTable2);
-            Controls.Add(buttonTable3);
-            Controls.Add(buttonTable1);
             Controls.Add(panelNameBackground);
             Controls.Add(pictureBoxChapeauLogo);
             Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
@@ -331,16 +181,6 @@
         private PictureBox pictureBoxChapeauLogo;
         private Panel panelNameBackground;
         private Label labelName;
-        private Button buttonTable1;
-        private Button buttonTable3;
-        private Button buttonTable5;
-        private Button buttonTable7;
-        private Button buttonTable9;
-        private Button buttonTable2;
-        private Button buttonTable4;
-        private Button buttonTable6;
-        private Button buttonTable8;
-        private Button buttonTable10;
         private Panel panelLegendFree;
         private Panel panelStatusOccupied;
         private Panel panelLegendReserved;

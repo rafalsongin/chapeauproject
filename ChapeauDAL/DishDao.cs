@@ -8,11 +8,9 @@ namespace ChapeauDAL
     {
         public List<Dish> GetAllDishes()
         {
-            // sql query
             string query = "SELECT id, menu_item_id FROM [dish]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<Dish> ReadTables(DataTable dataTable)

@@ -8,11 +8,9 @@ namespace ChapeauDAL
     {
         public List<Drink> GetAllDrinks()
         {
-            // sql query
             string query =  "SELECT id, is_alcoholic, menu_item_id FROM [drink]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<Drink> ReadTables(DataTable dataTable)
