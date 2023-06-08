@@ -49,6 +49,8 @@ namespace ChapeauUI
                 typeOfViewLabel.Text = "Bar View";
             }
 
+            comboBoxFiltering.Text = "Show";  // the filtering must be done ----------------**********************-------------------------
+
         }
 
         private void DisplayOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
@@ -112,6 +114,11 @@ namespace ChapeauUI
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
             li.SubItems.Add(item.Status.ToString());
             SelectedOrderListView.Items.Add(li);
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

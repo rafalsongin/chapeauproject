@@ -54,6 +54,8 @@
             preparedButton = new Button();
             servedButton = new Button();
             inPreparationButton = new Button();
+            buttonLogOut = new Button();
+            comboBoxFiltering = new ComboBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -304,11 +306,33 @@
             inPreparationButton.UseVisualStyleBackColor = true;
             inPreparationButton.Click += InPreparationButton_Click;
             // 
+            // buttonLogOut
+            // 
+            buttonLogOut.BackColor = Color.FromArgb(243, 218, 128);
+            buttonLogOut.Location = new Point(940, 2);
+            buttonLogOut.Name = "buttonLogOut";
+            buttonLogOut.Size = new Size(117, 50);
+            buttonLogOut.TabIndex = 17;
+            buttonLogOut.Text = "Log Out";
+            buttonLogOut.UseVisualStyleBackColor = false;
+            // 
+            // comboBoxFiltering
+            // 
+            comboBoxFiltering.BackColor = Color.FromArgb(243, 218, 128);
+            comboBoxFiltering.FormattingEnabled = true;
+            comboBoxFiltering.Items.AddRange(new object[] { "Finished", "Running" });
+            comboBoxFiltering.Location = new Point(547, 726);
+            comboBoxFiltering.Name = "comboBoxFiltering";
+            comboBoxFiltering.Size = new Size(182, 33);
+            comboBoxFiltering.TabIndex = 18;
+            // 
             // BarOrKitchenViewUI
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1284, 782);
+            Controls.Add(comboBoxFiltering);
+            Controls.Add(buttonLogOut);
             Controls.Add(inPreparationButton);
             Controls.Add(servedButton);
             Controls.Add(preparedButton);
@@ -361,5 +385,7 @@
         private ColumnHeader count;
         private ColumnHeader Description;
         private Label label8;
+        private Button buttonLogOut;
+        private ComboBox comboBoxFiltering;
     }
 }
