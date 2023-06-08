@@ -91,6 +91,8 @@ namespace ChapeauUI
 
         private void ChangeActiveTableStatus(TableStatus status)
         {
+            Table.status = status.ToString();
+
             // changes table status in the database
             TableService tableService = new TableService();
             tableService.ChangeTableStatus(Table);
