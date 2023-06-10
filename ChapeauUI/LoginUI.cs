@@ -29,9 +29,7 @@ namespace ChapeauUI
             catch (Exception error)
             {
                 MessageBox.Show(error.Message);
-
-                ErrorLogger errorLogger = new ErrorLogger();
-                errorLogger.LogError(error.Message);
+                new ErrorLogger(error.Message);
             }
         }
 
@@ -51,6 +49,7 @@ namespace ChapeauUI
                 EmployeeService employeeService = new EmployeeService();
                 Employee employee = employeeService.GetEmployeeByUsername(inputUsername);
 
+                new ActivityLogger($"{employee.FirstName} {employee.LastName} logged in into {employee.Role} application!");
                 OpenFormBasedOnTheRole(employee);
             }
             else
@@ -64,17 +63,14 @@ namespace ChapeauUI
         {
             if (employee.Role == EmployeeRole.Waiter)
             {
-                AllTablesViewUI newForm = new AllTablesViewUI();
+                // passing employee who logged in data to the next form.
+                AllTablesViewUI newForm = new AllTablesViewUI(employee);
                 OpenUI(newForm);
             }
             else if (employee.Role == EmployeeRole.Chef || employee.Role == EmployeeRole.Bartender)
             {
                 BarOrKitchenViewUI newForm = new BarOrKitchenViewUI(employee);
                 OpenUI(newForm);
-            }
-            else if (employee.Role == EmployeeRole.Manager)
-            {
-                // no manager UI
             }
             else
             {

@@ -23,6 +23,10 @@ namespace ChapeauModel
                 {
                     return TableStatus.Reserved;
                 }
+                else if (status == "Ordered")
+                {
+                    return TableStatus.Ordered;
+                }
                 else
                 {
                     return TableStatus.Undefined;

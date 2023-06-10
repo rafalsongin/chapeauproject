@@ -16,11 +16,9 @@ namespace ChapeauDAL
         OrderStatus status = new OrderStatus();
         public List<ContainsTableData> GetAllData()
         {
-            // sql query
             string query = "SELECT order_id, menu_item_id,status FROM [contains]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadTables(ExecuteSelectQuery(query));
         }
 
         private List<ContainsTableData> ReadTables(DataTable dataTable)
