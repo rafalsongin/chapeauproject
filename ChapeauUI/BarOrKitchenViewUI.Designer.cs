@@ -41,15 +41,17 @@
             OrderTime = new ColumnHeader();
             Comments = new ColumnHeader();
             panel4 = new Panel();
+            Comment = new Label();
             label6 = new Label();
+            Time2 = new Label();
+            Time = new Label();
             label4 = new Label();
             label5 = new Label();
             label3 = new Label();
             label2 = new Label();
-            label8 = new Label();
             pictureBoxChapeauLogo = new PictureBox();
             label7 = new Label();
-            panel5 = new Panel();
+            panelStatus = new Panel();
             SelectedOrderListView = new ListView();
             ID = new ColumnHeader();
             Status = new ColumnHeader();
@@ -59,15 +61,12 @@
             inPreparationButton = new Button();
             buttonLogOut = new Button();
             comboBoxFiltering = new ComboBox();
-            Time2 = new Label();
-            Time = new Label();
-            Comment = new Label();
             ChangeListView = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
-            panel5.SuspendLayout();
+            panelStatus.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -167,22 +166,49 @@
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label2);
-            panel4.Controls.Add(label8);
             panel4.Location = new Point(13, 200);
             panel4.Margin = new Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
             panel4.Size = new Size(1688, 60);
             panel4.TabIndex = 4;
             // 
+            // Comment
+            // 
+            Comment.AutoSize = true;
+            Comment.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Comment.Location = new Point(947, 17);
+            Comment.Name = "Comment";
+            Comment.Size = new Size(99, 25);
+            Comment.TabIndex = 21;
+            Comment.Text = "Comments";
+            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(1371, 18);
+            label6.Location = new Point(1337, 18);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(176, 25);
             label6.TabIndex = 10;
             label6.Text = "Change Order Status";
+            // 
+            // Time2
+            // 
+            Time2.AutoSize = true;
+            Time2.Location = new Point(805, 28);
+            Time2.Name = "Time2";
+            Time2.Size = new Size(50, 25);
+            Time2.TabIndex = 19;
+            Time2.Text = "Time";
+            // 
+            // Time
+            // 
+            Time.AutoSize = true;
+            Time.Location = new Point(803, 8);
+            Time.Name = "Time";
+            Time.Size = new Size(58, 25);
+            Time.TabIndex = 20;
+            Time.Text = "Order";
             // 
             // label4
             // 
@@ -197,7 +223,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(265, 18);
+            label5.Location = new Point(257, 18);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(60, 25);
@@ -207,31 +233,22 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(136, 8);
+            label3.Location = new Point(136, 17);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(58, 25);
+            label3.Size = new Size(52, 25);
             label3.TabIndex = 6;
-            label3.Text = "Order";
+            label3.Text = "Table";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(486, 18);
+            label2.Location = new Point(526, 18);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(102, 25);
             label2.TabIndex = 5;
             label2.Text = "Description";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(126, 26);
-            label8.Name = "label8";
-            label8.Size = new Size(77, 25);
-            label8.TabIndex = 17;
-            label8.Text = "Number";
             // 
             // pictureBoxChapeauLogo
             // 
@@ -255,15 +272,15 @@
             label7.TabIndex = 10;
             label7.Text = "View Order Status";
             // 
-            // panel5
+            // panelStatus
             // 
-            panel5.BackColor = Color.FromArgb(255, 179, 71);
-            panel5.Controls.Add(label7);
-            panel5.Location = new Point(1154, 356);
-            panel5.Margin = new Padding(4, 5, 4, 5);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(549, 60);
-            panel5.TabIndex = 12;
+            panelStatus.BackColor = Color.FromArgb(255, 179, 71);
+            panelStatus.Controls.Add(label7);
+            panelStatus.Location = new Point(1154, 356);
+            panelStatus.Margin = new Padding(4, 5, 4, 5);
+            panelStatus.Name = "panelStatus";
+            panelStatus.Size = new Size(549, 60);
+            panelStatus.TabIndex = 12;
             // 
             // SelectedOrderListView
             // 
@@ -347,40 +364,12 @@
             // 
             comboBoxFiltering.BackColor = Color.FromArgb(243, 218, 128);
             comboBoxFiltering.FormattingEnabled = true;
-            comboBoxFiltering.Items.AddRange(new object[] { "Finished", "Running" });
+            comboBoxFiltering.Items.AddRange(new object[] { "Finished Orders", "Running Orders" });
             comboBoxFiltering.Location = new Point(758, 729);
             comboBoxFiltering.Name = "comboBoxFiltering";
-            comboBoxFiltering.Size = new Size(238, 33);
+            comboBoxFiltering.Size = new Size(266, 33);
             comboBoxFiltering.TabIndex = 18;
             comboBoxFiltering.SelectedIndexChanged += comboBoxFiltering_SelectedIndexChanged;
-            // 
-            // Time2
-            // 
-            Time2.AutoSize = true;
-            Time2.Location = new Point(805, 28);
-            Time2.Name = "Time2";
-            Time2.Size = new Size(50, 25);
-            Time2.TabIndex = 19;
-            Time2.Text = "Time";
-            // 
-            // Time
-            // 
-            Time.AutoSize = true;
-            Time.Location = new Point(803, 8);
-            Time.Name = "Time";
-            Time.Size = new Size(58, 25);
-            Time.TabIndex = 20;
-            Time.Text = "Order";
-            // 
-            // Comment
-            // 
-            Comment.AutoSize = true;
-            Comment.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            Comment.Location = new Point(947, 17);
-            Comment.Name = "Comment";
-            Comment.Size = new Size(99, 25);
-            Comment.TabIndex = 21;
-            Comment.Text = "Comments";
             // 
             // ChangeListView
             // 
@@ -404,7 +393,7 @@
             Controls.Add(servedButton);
             Controls.Add(preparedButton);
             Controls.Add(SelectedOrderListView);
-            Controls.Add(panel5);
+            Controls.Add(panelStatus);
             Controls.Add(pictureBoxChapeauLogo);
             Controls.Add(panel4);
             Controls.Add(ordersListView);
@@ -420,8 +409,8 @@
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).EndInit();
-            panel5.ResumeLayout(false);
-            panel5.PerformLayout();
+            panelStatus.ResumeLayout(false);
+            panelStatus.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -441,7 +430,7 @@
         private PictureBox pictureBoxChapeauLogo;
         private Label label6;
         private Label label7;
-        private Panel panel5;
+        private Panel panelStatus;
         private ListView SelectedOrderListView;
         private ColumnHeader ID;
         private ColumnHeader Status;
@@ -452,7 +441,6 @@
         private ColumnHeader orderNumber;
         private ColumnHeader count;
         private ColumnHeader Description;
-        private Label label8;
         private Button buttonLogOut;
         private ComboBox comboBoxFiltering;
         private ColumnHeader OrderTime;
