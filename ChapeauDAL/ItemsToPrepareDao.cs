@@ -13,7 +13,7 @@ namespace ChapeauDAL
 {
     public class ItemsToPrepareDao : BaseDao
     {
-        public List<ItemsToPrepare> GetAllItemsToPrepare() // int menuid maybe pass the id number here to filter, for the having, like having menuid = @this menu id
+        public List<Item> GetAllItemsToPrepare() // int menuid maybe pass the id number here to filter, for the having, like having menuid = @this menu id
         {
             // sql query
             string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_items.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_items.[menu_id], [order].[order_taken_time],[order].comments,menu_items.time_to_prepare\r\n\t" +
@@ -27,12 +27,14 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query));
         }
 
-        private List<ItemsToPrepare> ReadTables(DataTable dataTable)
+        private List<Item> ReadTables(DataTable dataTable)
         {
+            int id;
+            MenuType menuType = new MenuType();
             string statusString;
             OrderStatus status = new OrderStatus(); //used to convert the status
 
-            List<ItemsToPrepare> itemsToPrepare = new List<ItemsToPrepare>();
+            List<Item> itemsToPrepare = new List<Item>();
 
             foreach (DataRow datarow in dataTable.Rows)
             {
@@ -55,9 +57,24 @@ namespace ChapeauDAL
                     status = OrderStatus.Served;
                 }
 
-                
+                id = (int)datarow["menu_id"];
 
-                ItemsToPrepare item = new ItemsToPrepare()
+                if (id == 42342)
+                {
+                    menuType = MenuType.Lunch;
+                }
+                else if (id == 42343)
+                {
+                    menuType = MenuType.Dinner;
+                }
+                else
+                {
+                    menuType = MenuType.Drinks;
+                }
+
+
+
+                Item item = new Item()
                 {
                     OrderId = (int)datarow["order_id"],
                     Count = (int)datarow["COUNT"],
@@ -66,7 +83,7 @@ namespace ChapeauDAL
                     Status = status,
                     MenuItemId = (int)datarow["menu_item_id"],
                     Covers = (int)datarow["covers"],
-                    MenuId = (int)datarow["menu_id"],
+                    MenuType = menuType,
                     OrderTime = TimeOnly.FromDateTime((DateTime)datarow["order_taken_time"]),
                     PreparationTimer = TimeSpan.FromMinutes((int)datarow["time_to_prepare"]),
                     Comments = datarow["comments"] as string ?? string.Empty
