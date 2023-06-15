@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace ChapeauModel
 {
@@ -16,10 +17,8 @@ namespace ChapeauModel
         public int MenuItemId { get; set; }
         public int Covers { get; set; }
         public int MenuId { get; set; }
-
-        public override string ToString()
-        {
-            return $"";
-        }
+        public TimeOnly OrderTime { get; set; }
+        public string Comments { get; set; }
+        public TimeSpan PreparationTimer { get; set; }
     }
 }

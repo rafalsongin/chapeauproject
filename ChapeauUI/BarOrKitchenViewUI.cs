@@ -1,5 +1,6 @@
 ﻿using ChapeauModel;
 using ChapeauService;
+using SomerenService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,9 @@ namespace ChapeauUI
                 li.SubItems.Add(item.Covers.ToString());
                 li.SubItems.Add(item.Count.ToString());
                 li.SubItems.Add(item.Name);
+                li.SubItems.Add(item.OrderTime.ToString());
+                li.SubItems.Add(item.PreparationTimer.ToString());
+                li.SubItems.Add(item.Comments);
                 li.Tag = item;
                 ordersListView.Items.Add(li);
             }
@@ -112,11 +116,38 @@ namespace ChapeauUI
             ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
 
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
-            li.SubItems.Add(item.Status.ToString());
+            if (item.Status == OrderStatus.InPreparation)
+            {
+                li.SubItems.Add("In Preparation");
+            }
+            else
+            {
+                li.SubItems.Add(item.Status.ToString());
+            }
             SelectedOrderListView.Items.Add(li);
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void OpenUI(Form newForm)
+        {
+            // define active form (LoginUI) and hide it
+            Form activeForm = ActiveForm;
+            activeForm.Hide();
+
+            // show new form, which needs to be open
+            newForm.ShowDialog();
+
+            // close previous form (LoginUI), so it's not running in the background
+            activeForm.Close();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            /// new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} logged out from application!");
+            LoginUI newForm = new LoginUI();
+            OpenUI(newForm);
+        }
+
+        private void comboBoxFiltering_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
