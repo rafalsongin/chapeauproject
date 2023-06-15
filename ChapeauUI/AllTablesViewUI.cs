@@ -53,9 +53,17 @@ namespace ChapeauUI
                 Button clickedButton = (Button)sender;
                 Table table = (Table)clickedButton.Tag;
 
-                // table - button table which was clicked, + logged in employee to track the name
-                TableStatusUI newForm = new TableStatusUI(table, LoggedInEmployee);
-                OpenUI(newForm);
+                if (table.Status == TableStatus.Ordered)
+                {
+                    OrderViewUI newForm = new OrderViewUI(table, LoggedInEmployee);
+                    OpenUI(newForm);
+                }
+                else
+                {
+                    // table - button table which was clicked, + logged in employee to track the name
+                    TableStatusUI newForm = new TableStatusUI(table, LoggedInEmployee);
+                    OpenUI(newForm);
+                }
             }
             catch (Exception error)
             {

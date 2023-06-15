@@ -115,7 +115,7 @@ namespace ChapeauUI
                     SetReservedButtonActive();
                     break;
                 case TableStatus.Ordered:
-                    OrderViewUI newForm = new OrderViewUI(Table);
+                    OrderViewUI newForm = new OrderViewUI(Table, LoggedInEmployee);
                     OpenUI(newForm);
                     break;
                 default:
