@@ -17,7 +17,7 @@ namespace ChapeauUI
     public partial class BarOrKitchenViewUI : Form
     {
         private Employee employee;
-        ContainsTableDataService containsTableDataService = new ContainsTableDataService();
+        private ContainsTableDataService containsTableDataService = new ContainsTableDataService();
 
         public BarOrKitchenViewUI(Employee employee)
         {
