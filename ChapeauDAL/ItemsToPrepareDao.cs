@@ -30,8 +30,7 @@ namespace ChapeauDAL
         private List<ItemsToPrepare> ReadTables(DataTable dataTable)
         {
             string statusString;
-            DateTime dateTime = new DateTime();
-            OrderStatus status = new OrderStatus();
+            OrderStatus status = new OrderStatus(); //used to convert the status
 
             List<ItemsToPrepare> itemsToPrepare = new List<ItemsToPrepare>();
 
@@ -56,7 +55,7 @@ namespace ChapeauDAL
                     status = OrderStatus.Served;
                 }
 
-                dateTime = (DateTime)datarow["order_taken_time"];
+                
 
                 ItemsToPrepare item = new ItemsToPrepare()
                 {
@@ -68,7 +67,7 @@ namespace ChapeauDAL
                     MenuItemId = (int)datarow["menu_item_id"],
                     Covers = (int)datarow["covers"],
                     MenuId = (int)datarow["menu_id"],
-                    OrderTime = TimeOnly.FromDateTime(dateTime),
+                    OrderTime = TimeOnly.FromDateTime((DateTime)datarow["order_taken_time"]),
                     PreparationTimer = TimeSpan.FromMinutes((int)datarow["time_to_prepare"]),
                     Comments = datarow["comments"] as string ?? string.Empty
                 };

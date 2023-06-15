@@ -16,7 +16,9 @@ namespace ChapeauUI
 {
     public partial class BarOrKitchenViewUI : Form
     {
-        Employee employee;
+        private Employee employee;
+        ContainsTableDataService containsTableDataService = new ContainsTableDataService();
+
         public BarOrKitchenViewUI(Employee employee)
         {
             InitializeComponent();
@@ -24,7 +26,7 @@ namespace ChapeauUI
         }
 
         // get the stuff from Service layer methods
-        private List<ItemsToPrepare> GetItems()
+        private List<ItemsToPrepare> GetUnpreparedItems()
         {
             ItemsToPrepareService items = new ItemsToPrepareService();
             List<ItemsToPrepare> itemsList = new List<ItemsToPrepare>();
@@ -42,7 +44,7 @@ namespace ChapeauUI
 
         protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
         {
-            DisplayOrders(GetItems());
+            DisplayUnpreparedOrders(GetUnpreparedItems());
             employeeNameLabel.Text = employee.FirstName;
 
             if (employee.Role == EmployeeRole.Bartender)
@@ -50,11 +52,11 @@ namespace ChapeauUI
                 typeOfViewLabel.Text = "Bar View";
             }
 
-            comboBoxFiltering.Text = "Show";  // the filtering must be done ----------------**********************-------------------------
+            comboBoxFiltering.Text = "Show";
 
         }
 
-        private void DisplayOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
+        private void DisplayUnpreparedOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
         {
             foreach (ItemsToPrepare item in items)
             {
@@ -71,33 +73,37 @@ namespace ChapeauUI
 
         // buttons --------------
 
-        ContainsTableDataService ContainsTableDataService = new ContainsTableDataService();
+
         private void InPreparationButton_Click(object sender, EventArgs e)
         {
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
             ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
             item.Status = OrderStatus.InPreparation;
-            ContainsTableDataService.UpdateItemStatus(item);
+            containsTableDataService.UpdateItemStatus(item);
             SelectedOrderListView.Items.Clear();
             UpdateListViewOfSelectedOrder();
         }
 
         private void PreparedButton_Click(object sender, EventArgs e)
         {
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} prepard order!");
             ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
             item.Status = OrderStatus.Prepared;
-            ContainsTableDataService.UpdateItemStatus(item);
+            containsTableDataService.UpdateItemStatus(item);
             SelectedOrderListView.Items.Clear();
             UpdateListViewOfSelectedOrder();
         }
 
         private void ServedButton_Click(object sender, EventArgs e)
         {
+           
             ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
             item.Status = OrderStatus.Served;
-            ContainsTableDataService.UpdateItemStatus(item);
+            containsTableDataService.UpdateItemStatus(item);
             SelectedOrderListView.Items.Clear();
             ordersListView.Items.Clear();
-            DisplayOrders(GetItems());
+            DisplayUnpreparedOrders(GetUnpreparedItems());
+            new ActivityLogger($"{item.Name} has been served!");
 
         }
 
@@ -142,16 +148,66 @@ namespace ChapeauUI
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            /// new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} logged out from application!");
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} logged out from application!");
             LoginUI newForm = new LoginUI();
             OpenUI(newForm);
         }
 
         private void comboBoxFiltering_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} changed filter!");
+            if (comboBoxFiltering.SelectedIndex == 0)
+            {
+                ordersListView.Items.Clear();
+                SelectedOrderListView.Hide();
+                inPreparationButton.Hide();
+                preparedButton.Hide();
+                servedButton.Hide();
+                panelStatus.Hide();
+                DisplayPreparedOrders(GetPreparedItems());
+            }
+            else
+            {
+                ordersListView.Items.Clear();
+                SelectedOrderListView.Show();
+                inPreparationButton.Show();
+                preparedButton.Show();
+                servedButton.Show();
+                panelStatus.Show();
+                DisplayUnpreparedOrders(GetUnpreparedItems());
+            }
         }
 
+        private List<ItemsPrepared> GetPreparedItems()
+        {
+            ItemsPreparedService items = new ItemsPreparedService();
+            List<ItemsPrepared> itemsList = new List<ItemsPrepared>();
+
+            if (employee.Role == EmployeeRole.Chef)
+            {
+                itemsList = items.GetItemsDishes();
+            }
+            else
+            {
+                itemsList = items.GetItemsDrinks();
+            }
+            return itemsList;
+        }
+
+        private void DisplayPreparedOrders(List<ItemsPrepared> items)           // displayes the dishes which have not been served yet in the list view
+        {
+            foreach (ItemsPrepared item in items)
+            {
+                ListViewItem li = new ListViewItem(item.OrderId.ToString());
+                li.SubItems.Add(item.Covers.ToString());
+                li.SubItems.Add(item.Count.ToString());
+                li.SubItems.Add(item.Name);
+                li.SubItems.Add(item.OrderTime.ToString());
+                li.SubItems.Add(item.Comments);
+                li.Tag = item;
+                ordersListView.Items.Add(li);
+            }
+        }
 
     }
 }
