@@ -12,14 +12,7 @@ namespace ChapeauService
             containsTableDataDao = new ContainsTableDataDao ();
         }
 
-        public List<ContainsTableData> GetDishes()
-        {
-            List<ContainsTableData> datas = containsTableDataDao.GetAllData();
-
-            return datas;
-        }
-
-        public void UpdateItemStatus(ItemsToPrepare item)
+        public void UpdateItemStatus(Item item)
         {
             containsTableDataDao.UpdateItemStatusInDB(item.OrderId,item.MenuItemId,item.Status);
         }

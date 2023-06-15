@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace ChapeauModel
 {
-    public class ItemsToPrepare
+    public class Item
     {
         public int OrderId { get; set; }
         public int Count { get; set; }
@@ -16,7 +15,7 @@ namespace ChapeauModel
         public OrderStatus Status { get; set; }
         public int MenuItemId { get; set; }
         public int Covers { get; set; }
-        public int MenuId { get; set; }
+        public MenuType MenuType { get; set; }
         public TimeOnly OrderTime { get; set; }
         public string Comments { get; set; }
         public TimeSpan PreparationTimer { get; set; }

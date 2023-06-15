@@ -17,15 +17,15 @@ namespace ChapeauService
             ItemsToPrepareDb = new ItemsToPrepareDao();
         }
 
-        public List<ItemsToPrepare> GetItemsDishes()
+        public List<Item> GetItemsDishes()
         {
-            List<ItemsToPrepare> items = ItemsToPrepareDb.GetAllItemsToPrepare();
-            List<ItemsToPrepare> dishes = new List<ItemsToPrepare>() ;
+            List<Item> items = ItemsToPrepareDb.GetAllItemsToPrepare();
+            List<Item> dishes = new List<Item>() ;
 
-            foreach (ItemsToPrepare item in items)
+            foreach (Item item in items)
             {
-                if (item.MenuId != 42344)
-                {
+                if (item.MenuType != MenuType.Drinks)             // this number represents the id of the DRINKS CATEGORY in the database
+                {                                     // it is used to FILTER drinks from food
                     dishes.Add(item);
                 }
             }
@@ -33,14 +33,14 @@ namespace ChapeauService
             return dishes;
         }
 
-        public List<ItemsToPrepare> GetItemsDrinks()
+        public List<Item> GetItemsDrinks()
         {
-            List<ItemsToPrepare> items = ItemsToPrepareDb.GetAllItemsToPrepare();
-            List<ItemsToPrepare> drinks = new List<ItemsToPrepare>();
+            List<Item> items = ItemsToPrepareDb.GetAllItemsToPrepare();
+            List<Item> drinks = new List<Item>();
 
-            foreach (ItemsToPrepare item in items)
+            foreach (Item item in items)
             {
-                if (item.MenuId == 42344)
+                if (item.MenuType == MenuType.Drinks)
                 {
                     item.Comments = string.Empty;
                     drinks.Add(item);

@@ -21,44 +21,62 @@ namespace ChapeauUI
 
         public BarOrKitchenViewUI(Employee employee)
         {
-            InitializeComponent();
-            this.employee = employee;
+            try
+            {
+                InitializeComponent();
+                this.employee = employee;
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                new ErrorLogger(error.Message);
+            }
+        
         }
 
         // get the stuff from Service layer methods
-        private List<ItemsToPrepare> GetUnpreparedItems()
+        private List<Item> GetUnpreparedItems()
         {
-            ItemsToPrepareService items = new ItemsToPrepareService();
-            List<ItemsToPrepare> itemsList = new List<ItemsToPrepare>();
+                ItemsToPrepareService items = new ItemsToPrepareService();
+                List<Item> itemsList = new List<Item>();
 
-            if (employee.Role == EmployeeRole.Chef)
-            {
-                itemsList = items.GetItemsDishes();
-            }
-            else
-            {
-                itemsList = items.GetItemsDrinks();
-            }
-            return itemsList;
+                if (employee.Role == EmployeeRole.Chef)
+                {
+                    itemsList = items.GetItemsDishes();
+                }
+                else
+                {
+                    itemsList = items.GetItemsDrinks();
+                }
+                return itemsList;
+           
         }
 
         protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
         {
-            DisplayUnpreparedOrders(GetUnpreparedItems());
-            employeeNameLabel.Text = employee.FirstName;
-
-            if (employee.Role == EmployeeRole.Bartender)
+            try
             {
-                typeOfViewLabel.Text = "Bar View";
-            }
+                DisplayUnpreparedOrders(GetUnpreparedItems());
+                employeeNameLabel.Text = employee.FirstName;
 
-            comboBoxFiltering.Text = "Show";
+                if (employee.Role == EmployeeRole.Bartender)
+                {
+                    typeOfViewLabel.Text = "Bar View";
+                }
+
+
+                comboBoxFiltering.Text = "Show";
+            }
+            catch(Exception error) 
+            {
+                throw new Exception("Error! The application didn't load properly." + error);
+            }
 
         }
 
-        private void DisplayUnpreparedOrders(List<ItemsToPrepare> items)           // displayes the dishes which have not been served yet in the list view
+        private void DisplayUnpreparedOrders(List<Item> items)           // displayes the dishes which have not been served yet in the list view
         {
-            foreach (ItemsToPrepare item in items)
+            foreach (Item item in items)
             {
                 ListViewItem li = new ListViewItem(item.OrderId.ToString());
                 li.SubItems.Add(item.Covers.ToString());
@@ -76,34 +94,57 @@ namespace ChapeauUI
 
         private void InPreparationButton_Click(object sender, EventArgs e)
         {
-            new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
-            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
-            item.Status = OrderStatus.InPreparation;
-            containsTableDataService.UpdateItemStatus(item);
-            SelectedOrderListView.Items.Clear();
-            UpdateListViewOfSelectedOrder();
+            try
+            {
+                new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
+                Item item = (Item   )ordersListView.SelectedItems[0].Tag;
+                item.Status = OrderStatus.InPreparation;
+                containsTableDataService.UpdateItemStatus(item);
+                SelectedOrderListView.Items.Clear();
+                UpdateListViewOfSelectedOrder();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                new ErrorLogger(error.Message);
+            }
         }
 
         private void PreparedButton_Click(object sender, EventArgs e)
         {
-            new ActivityLogger($"{employee.FirstName} {employee.LastName} prepard order!");
-            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
-            item.Status = OrderStatus.Prepared;
-            containsTableDataService.UpdateItemStatus(item);
-            SelectedOrderListView.Items.Clear();
-            UpdateListViewOfSelectedOrder();
+            try
+            {
+                new ActivityLogger($"{employee.FirstName} {employee.LastName} prepard order!");
+                Item item = (Item)ordersListView.SelectedItems[0].Tag;
+                item.Status = OrderStatus.Prepared;
+                containsTableDataService.UpdateItemStatus(item);
+                SelectedOrderListView.Items.Clear();
+                UpdateListViewOfSelectedOrder();
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                new ErrorLogger(error.Message);
+            }
         }
 
         private void ServedButton_Click(object sender, EventArgs e)
         {
-           
-            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
-            item.Status = OrderStatus.Served;
-            containsTableDataService.UpdateItemStatus(item);
-            SelectedOrderListView.Items.Clear();
-            ordersListView.Items.Clear();
-            DisplayUnpreparedOrders(GetUnpreparedItems());
-            new ActivityLogger($"{item.Name} has been served!");
+            try
+            {
+                Item item = (Item)ordersListView.SelectedItems[0].Tag;
+                item.Status = OrderStatus.Served;
+                containsTableDataService.UpdateItemStatus(item);
+                SelectedOrderListView.Items.Clear();
+                ordersListView.Items.Clear();
+                DisplayUnpreparedOrders(GetUnpreparedItems());
+                new ActivityLogger($"{item.Name} has been served!");
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                new ErrorLogger(error.Message);
+            }
 
         }
 
@@ -118,7 +159,7 @@ namespace ChapeauUI
 
         private void UpdateListViewOfSelectedOrder()    // moving the order to the other listview
         {
-            ItemsToPrepare item = (ItemsToPrepare)ordersListView.SelectedItems[0].Tag;
+            Item item = (Item)ordersListView.SelectedItems[0].Tag;
 
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
             if (item.Status == OrderStatus.InPreparation)
@@ -178,10 +219,10 @@ namespace ChapeauUI
             }
         }
 
-        private List<ItemsPrepared> GetPreparedItems()
+        private List<Item> GetPreparedItems()
         {
             ItemsPreparedService items = new ItemsPreparedService();
-            List<ItemsPrepared> itemsList = new List<ItemsPrepared>();
+            List<Item> itemsList = new List<Item>();
 
             if (employee.Role == EmployeeRole.Chef)
             {
@@ -194,9 +235,9 @@ namespace ChapeauUI
             return itemsList;
         }
 
-        private void DisplayPreparedOrders(List<ItemsPrepared> items)           // displayes the dishes which have not been served yet in the list view
+        private void DisplayPreparedOrders(List<Item> items)           // displayes the dishes which have not been served yet in the list view
         {
-            foreach (ItemsPrepared item in items)
+            foreach (Item item in items)
             {
                 ListViewItem li = new ListViewItem(item.OrderId.ToString());
                 li.SubItems.Add(item.Covers.ToString());
