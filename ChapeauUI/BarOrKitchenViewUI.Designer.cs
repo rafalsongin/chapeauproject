@@ -38,6 +38,9 @@
             orderNumber = new ColumnHeader();
             count = new ColumnHeader();
             Description = new ColumnHeader();
+            OrderTime = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
             panel4 = new Panel();
             label6 = new Label();
             label4 = new Label();
@@ -96,18 +99,17 @@
             // employeeNameLabel
             // 
             employeeNameLabel.AutoSize = true;
-            employeeNameLabel.BorderStyle = BorderStyle.FixedSingle;
-            employeeNameLabel.Location = new Point(33, 13);
+            employeeNameLabel.Location = new Point(41, 11);
             employeeNameLabel.Margin = new Padding(4, 0, 4, 0);
             employeeNameLabel.Name = "employeeNameLabel";
-            employeeNameLabel.Size = new Size(61, 27);
+            employeeNameLabel.Size = new Size(59, 25);
             employeeNameLabel.TabIndex = 0;
             employeeNameLabel.Text = "Name";
             // 
             // ordersListView
             // 
             ordersListView.BackColor = SystemColors.ControlLightLight;
-            ordersListView.Columns.AddRange(new ColumnHeader[] { orderID, orderNumber, count, Description });
+            ordersListView.Columns.AddRange(new ColumnHeader[] { orderID, orderNumber, count, Description, OrderTime, columnHeader3, columnHeader4 });
             ordersListView.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             ordersListView.FullRowSelect = true;
             ordersListView.GridLines = true;
@@ -138,7 +140,15 @@
             // Description
             // 
             Description.Text = "";
-            Description.Width = 450;
+            Description.Width = 100;
+            // 
+            // OrderTime
+            // 
+            OrderTime.Text = "";
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Width = 100;
             // 
             // panel4
             // 
@@ -158,7 +168,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(919, 18);
+            label6.Location = new Point(919, 16);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(176, 25);
@@ -188,7 +198,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(136, 10);
+            label3.Location = new Point(136, 8);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(58, 25);
@@ -208,7 +218,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(126, 35);
+            label8.Location = new Point(126, 26);
             label8.Name = "label8";
             label8.Size = new Size(77, 25);
             label8.TabIndex = 17;
@@ -315,6 +325,7 @@
             buttonLogOut.TabIndex = 17;
             buttonLogOut.Text = "Log Out";
             buttonLogOut.UseVisualStyleBackColor = false;
+            buttonLogOut.Click += buttonLogOut_Click;
             // 
             // comboBoxFiltering
             // 
@@ -325,6 +336,7 @@
             comboBoxFiltering.Name = "comboBoxFiltering";
             comboBoxFiltering.Size = new Size(182, 33);
             comboBoxFiltering.TabIndex = 18;
+            comboBoxFiltering.SelectedIndexChanged += comboBoxFiltering_SelectedIndexChanged;
             // 
             // BarOrKitchenViewUI
             // 
@@ -387,5 +399,8 @@
         private Label label8;
         private Button buttonLogOut;
         private ComboBox comboBoxFiltering;
+        private ColumnHeader OrderTime;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
     }
 }

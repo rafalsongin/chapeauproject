@@ -12,8 +12,7 @@ namespace ChapeauDAL
 {
     public class ContainsTableDataDao : BaseDao
     {
-        string statusString;
-        OrderStatus status = new OrderStatus();
+       
         public List<ContainsTableData> GetAllData()
         {
             string query = "SELECT order_id, menu_item_id,status FROM [contains]";
@@ -24,6 +23,9 @@ namespace ChapeauDAL
         private List<ContainsTableData> ReadTables(DataTable dataTable)
         {
             List<ContainsTableData> datas = new List<ContainsTableData>();
+
+              string statusString;                        //used for the conversion below 
+              OrderStatus status = new OrderStatus();
 
             foreach (DataRow datarow in dataTable.Rows)
             {
