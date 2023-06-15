@@ -13,14 +13,15 @@ namespace ChapeauUI
 {
     public partial class OrderViewUI : Form
     {
-        public OrderViewUI(Table table)
+        private Table Table { get; set; }
+        private Employee LoggedInEmployee { get; set; }
+
+        public OrderViewUI(Table table, Employee employee)
         {
+            LoggedInEmployee = employee;
+            Table = table;
+
             InitializeComponent();
-        }
-
-        private void OrderViewUI_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

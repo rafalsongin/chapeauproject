@@ -107,7 +107,7 @@
             buttonGoToTable.Name = "buttonGoToTable";
             buttonGoToTable.Size = new Size(155, 43);
             buttonGoToTable.TabIndex = 17;
-            buttonGoToTable.Text = "Go to table";
+            buttonGoToTable.Text = "Go to menu";
             buttonGoToTable.UseVisualStyleBackColor = false;
             // 
             // buttonBack
