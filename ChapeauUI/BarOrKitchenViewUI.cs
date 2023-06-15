@@ -63,7 +63,6 @@ namespace ChapeauUI
                 li.SubItems.Add(item.Count.ToString());
                 li.SubItems.Add(item.Name);
                 li.SubItems.Add(item.OrderTime.ToString());
-                li.SubItems.Add(item.PreparationTimer.ToString());
                 li.SubItems.Add(item.Comments);
                 li.Tag = item;
                 ordersListView.Items.Add(li);
@@ -124,6 +123,7 @@ namespace ChapeauUI
             {
                 li.SubItems.Add(item.Status.ToString());
             }
+            li.SubItems.Add(item.PreparationTimer.ToString());
             SelectedOrderListView.Items.Add(li);
         }
 
@@ -151,5 +151,7 @@ namespace ChapeauUI
         {
 
         }
+
+
     }
 }

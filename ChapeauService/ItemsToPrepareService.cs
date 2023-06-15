@@ -42,6 +42,7 @@ namespace ChapeauService
             {
                 if (item.MenuId == 42344)
                 {
+                    item.Comments = string.Empty;
                     drinks.Add(item);
                 }
             }

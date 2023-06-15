@@ -39,8 +39,7 @@
             count = new ColumnHeader();
             Description = new ColumnHeader();
             OrderTime = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
-            columnHeader4 = new ColumnHeader();
+            Comments = new ColumnHeader();
             panel4 = new Panel();
             label6 = new Label();
             label4 = new Label();
@@ -52,13 +51,18 @@
             label7 = new Label();
             panel5 = new Panel();
             SelectedOrderListView = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
+            ID = new ColumnHeader();
+            Status = new ColumnHeader();
+            WaitingTime = new ColumnHeader();
             preparedButton = new Button();
             servedButton = new Button();
             inPreparationButton = new Button();
             buttonLogOut = new Button();
             comboBoxFiltering = new ComboBox();
+            Time2 = new Label();
+            Time = new Label();
+            Comment = new Label();
+            ChangeListView = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
@@ -70,19 +74,19 @@
             // 
             panel1.BackColor = Color.FromArgb(255, 179, 71);
             panel1.Controls.Add(typeOfViewLabel);
-            panel1.Location = new Point(47, 78);
+            panel1.Location = new Point(12, 78);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1170, 103);
+            panel1.Size = new Size(1689, 103);
             panel1.TabIndex = 0;
             // 
             // typeOfViewLabel
             // 
             typeOfViewLabel.AutoSize = true;
-            typeOfViewLabel.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            typeOfViewLabel.Location = new Point(444, 15);
+            typeOfViewLabel.Font = new Font("Segoe UI", 35F, FontStyle.Regular, GraphicsUnit.Point);
+            typeOfViewLabel.Location = new Point(607, 4);
             typeOfViewLabel.Margin = new Padding(4, 0, 4, 0);
             typeOfViewLabel.Name = "typeOfViewLabel";
-            typeOfViewLabel.Size = new Size(275, 60);
+            typeOfViewLabel.Size = new Size(438, 93);
             typeOfViewLabel.TabIndex = 0;
             typeOfViewLabel.Text = "Kitchen View";
             // 
@@ -90,7 +94,7 @@
             // 
             panel2.BackColor = Color.FromArgb(255, 179, 71);
             panel2.Controls.Add(employeeNameLabel);
-            panel2.Location = new Point(1073, 2);
+            panel2.Location = new Point(1556, 2);
             panel2.Margin = new Padding(4, 5, 4, 5);
             panel2.Name = "panel2";
             panel2.Size = new Size(144, 50);
@@ -109,14 +113,14 @@
             // ordersListView
             // 
             ordersListView.BackColor = SystemColors.ControlLightLight;
-            ordersListView.Columns.AddRange(new ColumnHeader[] { orderID, orderNumber, count, Description, OrderTime, columnHeader3, columnHeader4 });
+            ordersListView.Columns.AddRange(new ColumnHeader[] { orderID, orderNumber, count, Description, OrderTime, Comments });
             ordersListView.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             ordersListView.FullRowSelect = true;
             ordersListView.GridLines = true;
-            ordersListView.Location = new Point(47, 270);
+            ordersListView.Location = new Point(13, 270);
             ordersListView.Margin = new Padding(4, 5, 4, 5);
             ordersListView.Name = "ordersListView";
-            ordersListView.Size = new Size(805, 432);
+            ordersListView.Size = new Size(1129, 432);
             ordersListView.TabIndex = 2;
             ordersListView.UseCompatibleStateImageBehavior = false;
             ordersListView.View = View.Details;
@@ -140,35 +144,40 @@
             // Description
             // 
             Description.Text = "";
-            Description.Width = 100;
+            Description.Width = 450;
             // 
             // OrderTime
             // 
             OrderTime.Text = "";
+            OrderTime.Width = 70;
             // 
-            // columnHeader3
+            // Comments
             // 
-            columnHeader3.Width = 100;
+            Comments.Text = "";
+            Comments.Width = 250;
             // 
             // panel4
             // 
             panel4.BackColor = Color.FromArgb(255, 179, 71);
+            panel4.Controls.Add(Comment);
             panel4.Controls.Add(label6);
+            panel4.Controls.Add(Time2);
+            panel4.Controls.Add(Time);
             panel4.Controls.Add(label4);
             panel4.Controls.Add(label5);
             panel4.Controls.Add(label3);
             panel4.Controls.Add(label2);
             panel4.Controls.Add(label8);
-            panel4.Location = new Point(47, 200);
+            panel4.Location = new Point(13, 200);
             panel4.Margin = new Padding(4, 5, 4, 5);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1170, 60);
+            panel4.Size = new Size(1688, 60);
             panel4.TabIndex = 4;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(919, 16);
+            label6.Location = new Point(1371, 18);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(176, 25);
@@ -227,10 +236,10 @@
             // pictureBoxChapeauLogo
             // 
             pictureBoxChapeauLogo.Image = (Image)resources.GetObject("pictureBoxChapeauLogo.Image");
-            pictureBoxChapeauLogo.Location = new Point(47, 2);
+            pictureBoxChapeauLogo.Location = new Point(12, 2);
             pictureBoxChapeauLogo.Margin = new Padding(4, 5, 4, 5);
             pictureBoxChapeauLogo.Name = "pictureBoxChapeauLogo";
-            pictureBoxChapeauLogo.Size = new Size(124, 68);
+            pictureBoxChapeauLogo.Size = new Size(159, 68);
             pictureBoxChapeauLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxChapeauLogo.TabIndex = 9;
             pictureBoxChapeauLogo.TabStop = false;
@@ -239,7 +248,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(89, 15);
+            label7.Location = new Point(189, 16);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(167, 28);
@@ -250,43 +259,49 @@
             // 
             panel5.BackColor = Color.FromArgb(255, 179, 71);
             panel5.Controls.Add(label7);
-            panel5.Location = new Point(851, 377);
+            panel5.Location = new Point(1154, 356);
             panel5.Margin = new Padding(4, 5, 4, 5);
             panel5.Name = "panel5";
-            panel5.Size = new Size(366, 60);
+            panel5.Size = new Size(549, 60);
             panel5.TabIndex = 12;
             // 
             // SelectedOrderListView
             // 
-            SelectedOrderListView.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2 });
+            SelectedOrderListView.Columns.AddRange(new ColumnHeader[] { ID, Status, WaitingTime });
             SelectedOrderListView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             SelectedOrderListView.FullRowSelect = true;
             SelectedOrderListView.GridLines = true;
-            SelectedOrderListView.Location = new Point(851, 428);
+            SelectedOrderListView.Location = new Point(1154, 426);
             SelectedOrderListView.Margin = new Padding(4, 5, 4, 5);
             SelectedOrderListView.Name = "SelectedOrderListView";
-            SelectedOrderListView.Size = new Size(364, 274);
+            SelectedOrderListView.Size = new Size(549, 274);
             SelectedOrderListView.TabIndex = 13;
             SelectedOrderListView.UseCompatibleStateImageBehavior = false;
             SelectedOrderListView.View = View.Details;
             // 
-            // columnHeader1
+            // ID
             // 
-            columnHeader1.Text = "Select order ID";
-            columnHeader1.Width = 180;
+            ID.Text = "Select order ID";
+            ID.Width = 180;
             // 
-            // columnHeader2
+            // Status
             // 
-            columnHeader2.Text = "Order status";
-            columnHeader2.Width = 180;
+            Status.Text = "Order status";
+            Status.Width = 180;
+            // 
+            // WaitingTime
+            // 
+            WaitingTime.Text = "Waiting Time";
+            WaitingTime.Width = 180;
             // 
             // preparedButton
             // 
             preparedButton.BackColor = Color.FromArgb(255, 179, 71);
-            preparedButton.Location = new Point(979, 295);
+            preparedButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            preparedButton.Location = new Point(1342, 293);
             preparedButton.Margin = new Padding(4, 5, 4, 5);
             preparedButton.Name = "preparedButton";
-            preparedButton.Size = new Size(107, 53);
+            preparedButton.Size = new Size(180, 55);
             preparedButton.TabIndex = 14;
             preparedButton.Text = "Prepared";
             preparedButton.UseVisualStyleBackColor = false;
@@ -295,10 +310,11 @@
             // servedButton
             // 
             servedButton.BackColor = Color.FromArgb(138, 210, 176);
-            servedButton.Location = new Point(1094, 295);
+            servedButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            servedButton.Location = new Point(1526, 293);
             servedButton.Margin = new Padding(0);
             servedButton.Name = "servedButton";
-            servedButton.Size = new Size(107, 53);
+            servedButton.Size = new Size(180, 55);
             servedButton.TabIndex = 15;
             servedButton.Text = "Served";
             servedButton.UseVisualStyleBackColor = false;
@@ -306,11 +322,11 @@
             // 
             // inPreparationButton
             // 
-            inPreparationButton.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            inPreparationButton.Location = new Point(863, 295);
+            inPreparationButton.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            inPreparationButton.Location = new Point(1154, 293);
             inPreparationButton.Margin = new Padding(4, 5, 4, 5);
             inPreparationButton.Name = "inPreparationButton";
-            inPreparationButton.Size = new Size(107, 53);
+            inPreparationButton.Size = new Size(180, 55);
             inPreparationButton.TabIndex = 16;
             inPreparationButton.Text = "In preparation";
             inPreparationButton.UseVisualStyleBackColor = true;
@@ -319,7 +335,7 @@
             // buttonLogOut
             // 
             buttonLogOut.BackColor = Color.FromArgb(243, 218, 128);
-            buttonLogOut.Location = new Point(940, 2);
+            buttonLogOut.Location = new Point(1405, 1);
             buttonLogOut.Name = "buttonLogOut";
             buttonLogOut.Size = new Size(117, 50);
             buttonLogOut.TabIndex = 17;
@@ -332,17 +348,56 @@
             comboBoxFiltering.BackColor = Color.FromArgb(243, 218, 128);
             comboBoxFiltering.FormattingEnabled = true;
             comboBoxFiltering.Items.AddRange(new object[] { "Finished", "Running" });
-            comboBoxFiltering.Location = new Point(547, 726);
+            comboBoxFiltering.Location = new Point(758, 729);
             comboBoxFiltering.Name = "comboBoxFiltering";
-            comboBoxFiltering.Size = new Size(182, 33);
+            comboBoxFiltering.Size = new Size(238, 33);
             comboBoxFiltering.TabIndex = 18;
             comboBoxFiltering.SelectedIndexChanged += comboBoxFiltering_SelectedIndexChanged;
+            // 
+            // Time2
+            // 
+            Time2.AutoSize = true;
+            Time2.Location = new Point(805, 28);
+            Time2.Name = "Time2";
+            Time2.Size = new Size(50, 25);
+            Time2.TabIndex = 19;
+            Time2.Text = "Time";
+            // 
+            // Time
+            // 
+            Time.AutoSize = true;
+            Time.Location = new Point(803, 8);
+            Time.Name = "Time";
+            Time.Size = new Size(58, 25);
+            Time.TabIndex = 20;
+            Time.Text = "Order";
+            // 
+            // Comment
+            // 
+            Comment.AutoSize = true;
+            Comment.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            Comment.Location = new Point(947, 17);
+            Comment.Name = "Comment";
+            Comment.Size = new Size(99, 25);
+            Comment.TabIndex = 21;
+            Comment.Text = "Comments";
+            // 
+            // ChangeListView
+            // 
+            ChangeListView.AutoSize = true;
+            ChangeListView.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            ChangeListView.Location = new Point(558, 727);
+            ChangeListView.Name = "ChangeListView";
+            ChangeListView.Size = new Size(174, 30);
+            ChangeListView.TabIndex = 19;
+            ChangeListView.Text = "Change list view:";
             // 
             // BarOrKitchenViewUI
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1284, 782);
+            ClientSize = new Size(1714, 784);
+            Controls.Add(ChangeListView);
             Controls.Add(comboBoxFiltering);
             Controls.Add(buttonLogOut);
             Controls.Add(inPreparationButton);
@@ -368,6 +423,7 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -387,8 +443,8 @@
         private Label label7;
         private Panel panel5;
         private ListView SelectedOrderListView;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader2;
+        private ColumnHeader ID;
+        private ColumnHeader Status;
         private Button preparedButton;
         private Button servedButton;
         private Button inPreparationButton;
@@ -401,6 +457,11 @@
         private ComboBox comboBoxFiltering;
         private ColumnHeader OrderTime;
         private ColumnHeader columnHeader3;
-        private ColumnHeader columnHeader4;
+        private ColumnHeader Comments;
+        private ColumnHeader WaitingTime;
+        private Label Time2;
+        private Label Time;
+        private Label Comment;
+        private Label ChangeListView;
     }
 }
