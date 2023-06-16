@@ -49,7 +49,6 @@ namespace ChapeauUI
                     itemsList = items.GetItemsDrinks();
                 }
                 return itemsList;
-           
         }
 
         protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
@@ -94,58 +93,22 @@ namespace ChapeauUI
 
         private void InPreparationButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
-                Item item = (Item   )ordersListView.SelectedItems[0].Tag;
-                item.Status = OrderStatus.InPreparation;
-                containsTableDataService.UpdateItemStatus(item);
-                SelectedOrderListView.Items.Clear();
-                UpdateListViewOfSelectedOrder();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                new ErrorLogger(error.Message);
-            }
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
+            UpdateItemStatus(OrderStatus.InPreparation);
+          
         }
 
         private void PreparedButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                new ActivityLogger($"{employee.FirstName} {employee.LastName} prepard order!");
-                Item item = (Item)ordersListView.SelectedItems[0].Tag;
-                item.Status = OrderStatus.Prepared;
-                containsTableDataService.UpdateItemStatus(item);
-                SelectedOrderListView.Items.Clear();
-                UpdateListViewOfSelectedOrder();
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                new ErrorLogger(error.Message);
-            }
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} is prepared order!");
+            UpdateItemStatus(OrderStatus.Prepared);
+           
         }
 
         private void ServedButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                Item item = (Item)ordersListView.SelectedItems[0].Tag;
-                item.Status = OrderStatus.Served;
-                containsTableDataService.UpdateItemStatus(item);
-                SelectedOrderListView.Items.Clear();
-                ordersListView.Items.Clear();
-                DisplayUnpreparedOrders(GetUnpreparedItems());
-                new ActivityLogger($"{item.Name} has been served!");
-            }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-                new ErrorLogger(error.Message);
-            }
-
+            UpdateItemStatus(OrderStatus.Served);
+            DisplayUnpreparedOrders(GetUnpreparedItems());
         }
 
         // -----------
@@ -159,6 +122,7 @@ namespace ChapeauUI
 
         private void UpdateListViewOfSelectedOrder()    // moving the order to the other listview
         {
+            SelectedOrderListView.Items.Clear();
             Item item = (Item)ordersListView.SelectedItems[0].Tag;
 
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
@@ -174,7 +138,7 @@ namespace ChapeauUI
             SelectedOrderListView.Items.Add(li);
         }
 
-        private void OpenUI(Form newForm)
+        private void OpenUI(Form newForm)                          //for logout
         {
             // define active form (LoginUI) and hide it
             Form activeForm = ActiveForm;
@@ -189,15 +153,15 @@ namespace ChapeauUI
 
         private void buttonLogOut_Click(object sender, EventArgs e)
         {
-            new ActivityLogger($"{employee.FirstName} {employee.LastName} logged out from application!");
+            new ActivityLogger($"{employee.FirstName} {employee.LastName} logged out from application!");     //for txt logger
             LoginUI newForm = new LoginUI();
             OpenUI(newForm);
         }
 
-        private void comboBoxFiltering_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxFiltering_SelectedIndexChanged(object sender, EventArgs e)                //the filtering box
         {
             new ActivityLogger($"{employee.FirstName} {employee.LastName} changed filter!");
-            if (comboBoxFiltering.SelectedIndex == 0)
+            if (comboBoxFiltering.SelectedIndex == 0)                                 //show finished orders of today
             {
                 ordersListView.Items.Clear();
                 SelectedOrderListView.Hide();
@@ -207,7 +171,7 @@ namespace ChapeauUI
                 panelStatus.Hide();
                 DisplayPreparedOrders(GetPreparedItems());
             }
-            else
+            else                               // show running orders
             {
                 ordersListView.Items.Clear();
                 SelectedOrderListView.Show();
@@ -219,7 +183,7 @@ namespace ChapeauUI
             }
         }
 
-        private List<Item> GetPreparedItems()
+        private List<Item> GetPreparedItems()                           //make a list of all the prepared items  
         {
             ItemsPreparedService items = new ItemsPreparedService();
             List<Item> itemsList = new List<Item>();
@@ -247,6 +211,32 @@ namespace ChapeauUI
                 li.SubItems.Add(item.Comments);
                 li.Tag = item;
                 ordersListView.Items.Add(li);
+            }
+        }
+
+        private void UpdateItemStatus(OrderStatus status)
+        {
+            try
+            {
+                if (ordersListView.SelectedItems.Count == 0)
+                    return;
+
+                Item item = (Item)ordersListView.SelectedItems[0].Tag;
+                item.Status = status;
+
+                containsTableDataService.UpdateItemStatus(item);
+
+                UpdateListViewOfSelectedOrder();
+                if (status == OrderStatus.Served)
+                {
+                    new ActivityLogger($"{item.Name} has been served!");
+                    ordersListView.Items.Clear(); // Remove the served item from the list view
+                }
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+                new ErrorLogger(error.Message);
             }
         }
 
