@@ -49,5 +49,12 @@ namespace ChapeauService
 
             return drinks;
         }
+
+        public List<Item> GetItemsToPrepareByTableId(int tableId)
+        {
+            List<Item> items = ItemsToPrepareDb.GetItemsToPrepareByTableId(tableId);
+
+            return items;
+        }
     }
 }
