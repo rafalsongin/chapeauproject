@@ -76,16 +76,19 @@ namespace ChapeauUI
         // Table status buttons and appearance
         private void buttonSetTableFree_Click(object sender, EventArgs e)
         {
+            new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} set table {Table.Id} status to free!");
             ChangeActiveTableStatus(TableStatus.Available);
         }
 
         private void buttonSetTableOccupied_Click(object sender, EventArgs e)
         {
+            new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} set table {Table.Id} status to occupied!");
             ChangeActiveTableStatus(TableStatus.Occupied);
         }
 
         private void buttonSetTableReserved_Click(object sender, EventArgs e)
         {
+            new ActivityLogger($"{LoggedInEmployee.FirstName} {LoggedInEmployee.LastName} set table {Table.Id} status to reserved!");
             ChangeActiveTableStatus(TableStatus.Reserved);
         }
 

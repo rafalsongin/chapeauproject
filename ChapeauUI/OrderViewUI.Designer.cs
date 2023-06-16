@@ -37,7 +37,7 @@
             labelTableHeading = new Label();
             buttonPay = new Button();
             buttonServed = new Button();
-            labelOrderStatus = new Label();
+            labelItemsStatus = new Label();
             panelNameBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxChapeauLogo).BeginInit();
             SuspendLayout();
@@ -53,6 +53,7 @@
             buttonLogout.TabIndex = 26;
             buttonLogout.Text = "Logout";
             buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
             // 
             // panelNameBackground
             // 
@@ -98,6 +99,7 @@
             buttonBack.TabIndex = 23;
             buttonBack.Text = "BACK";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // labelTableHeading
             // 
@@ -121,6 +123,7 @@
             buttonPay.TabIndex = 27;
             buttonPay.Text = "PAY";
             buttonPay.UseVisualStyleBackColor = false;
+            buttonPay.Click += buttonPay_Click;
             // 
             // buttonServed
             // 
@@ -134,16 +137,17 @@
             buttonServed.TabIndex = 28;
             buttonServed.Text = "SERVED";
             buttonServed.UseVisualStyleBackColor = false;
+            buttonServed.Click += buttonServed_Click;
             // 
-            // labelOrderStatus
+            // labelItemsStatus
             // 
-            labelOrderStatus.AutoSize = true;
-            labelOrderStatus.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            labelOrderStatus.Location = new Point(65, 284);
-            labelOrderStatus.Name = "labelOrderStatus";
-            labelOrderStatus.Size = new Size(155, 32);
-            labelOrderStatus.TabIndex = 22;
-            labelOrderStatus.Text = "Order status:";
+            labelItemsStatus.AutoSize = true;
+            labelItemsStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            labelItemsStatus.Location = new Point(12, 211);
+            labelItemsStatus.Name = "labelItemsStatus";
+            labelItemsStatus.Size = new Size(90, 21);
+            labelItemsStatus.TabIndex = 22;
+            labelItemsStatus.Text = "ItemsStatus";
             // 
             // OrderViewUI
             // 
@@ -156,7 +160,7 @@
             Controls.Add(panelNameBackground);
             Controls.Add(pictureBoxChapeauLogo);
             Controls.Add(buttonBack);
-            Controls.Add(labelOrderStatus);
+            Controls.Add(labelItemsStatus);
             Controls.Add(labelTableHeading);
             MaximumSize = new Size(414, 736);
             MinimumSize = new Size(414, 736);
@@ -179,6 +183,6 @@
         private Label labelTableHeading;
         private Button buttonPay;
         private Button buttonServed;
-        private Label labelOrderStatus;
+        private Label labelItemsStatus;
     }
 }
