@@ -53,6 +53,7 @@
             buttonLogout.TabIndex = 26;
             buttonLogout.Text = "Logout";
             buttonLogout.UseVisualStyleBackColor = false;
+            buttonLogout.Click += buttonLogout_Click;
             // 
             // panelNameBackground
             // 
@@ -98,6 +99,7 @@
             buttonBack.TabIndex = 23;
             buttonBack.Text = "BACK";
             buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.Click += buttonBack_Click;
             // 
             // labelTableHeading
             // 
@@ -139,7 +141,7 @@
             // 
             labelOrderStatus.AutoSize = true;
             labelOrderStatus.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            labelOrderStatus.Location = new Point(65, 284);
+            labelOrderStatus.Location = new Point(64, 239);
             labelOrderStatus.Name = "labelOrderStatus";
             labelOrderStatus.Size = new Size(155, 32);
             labelOrderStatus.TabIndex = 22;
