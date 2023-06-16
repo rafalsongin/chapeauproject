@@ -9,10 +9,17 @@ Year: 2023
  
  Members:
  
-Rafal Songin
+Rafal Songin - Login/logoff & Restaurant/table view
 
-Miguel Angel Orrego La Chira
+Miguel Angel Orrego La Chira - Order view
 
-Cezar Ciobanu
+Cezar Ciobanu - Kitchen view & Bar view
 
-Sagy Elmosslimani
+
+Login credentials:
+
+waiter:loginwaiter - opens waiter application
+
+chef:loginchef - opens chef application
+
+barman:loginbarman - opens barman application
