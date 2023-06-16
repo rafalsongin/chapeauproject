@@ -15,6 +15,13 @@ namespace ChapeauUI
 {
     public partial class LoginUI : Form
     {
+        /*
+        Login credentials:
+        waiter:loginwaiter - opens waiter application
+        chef:loginchef - opens chef application
+        barman:loginbarman - opens barman application
+         */
+        
         public LoginUI()
         {
             InitializeComponent();
