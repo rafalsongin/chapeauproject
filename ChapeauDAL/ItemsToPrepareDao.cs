@@ -13,7 +13,7 @@ namespace ChapeauDAL
 {
     public class ItemsToPrepareDao : BaseDao
     {
-        public List<Item> GetAllItemsToPrepare() // int menuid maybe pass the id number here to filter, for the having, like having menuid = @this menu id
+        public List<Item> GetAllItemsToPrepare() 
         {
             // sql query
             string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_items.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_items.[menu_id], [order].[order_taken_time],[order].comments,menu_items.time_to_prepare\r\n\t" +
@@ -92,7 +92,6 @@ namespace ChapeauDAL
                 {
                     menuType = MenuType.Drinks;
                 }
-
 
 
                 Item item = new Item()

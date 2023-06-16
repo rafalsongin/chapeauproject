@@ -23,7 +23,7 @@ namespace ChapeauDAL
                 {
                     Id = (int)datarow["id"],
                     isAlcoholic = (bool)datarow["is_alcoholic"],
-                    MenuItemId = (int)datarow["menu_item_id"],
+                    MenuItemId = (int)datarow["menu_item_id"]
                 };
 
                 drinks.Add(drink);
