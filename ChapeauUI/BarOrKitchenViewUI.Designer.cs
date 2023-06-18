@@ -52,7 +52,7 @@
             pictureBoxChapeauLogo = new PictureBox();
             label7 = new Label();
             panelStatus = new Panel();
-            SelectedOrderListView = new ListView();
+            selectedOrderListView = new ListView();
             ID = new ColumnHeader();
             Status = new ColumnHeader();
             WaitingTime = new ColumnHeader();
@@ -282,19 +282,19 @@
             panelStatus.Size = new Size(549, 60);
             panelStatus.TabIndex = 12;
             // 
-            // SelectedOrderListView
+            // selectedOrderListView
             // 
-            SelectedOrderListView.Columns.AddRange(new ColumnHeader[] { ID, Status, WaitingTime });
-            SelectedOrderListView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            SelectedOrderListView.FullRowSelect = true;
-            SelectedOrderListView.GridLines = true;
-            SelectedOrderListView.Location = new Point(1154, 426);
-            SelectedOrderListView.Margin = new Padding(4, 5, 4, 5);
-            SelectedOrderListView.Name = "SelectedOrderListView";
-            SelectedOrderListView.Size = new Size(549, 274);
-            SelectedOrderListView.TabIndex = 13;
-            SelectedOrderListView.UseCompatibleStateImageBehavior = false;
-            SelectedOrderListView.View = View.Details;
+            selectedOrderListView.Columns.AddRange(new ColumnHeader[] { ID, Status, WaitingTime });
+            selectedOrderListView.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            selectedOrderListView.FullRowSelect = true;
+            selectedOrderListView.GridLines = true;
+            selectedOrderListView.Location = new Point(1154, 426);
+            selectedOrderListView.Margin = new Padding(4, 5, 4, 5);
+            selectedOrderListView.Name = "selectedOrderListView";
+            selectedOrderListView.Size = new Size(549, 274);
+            selectedOrderListView.TabIndex = 13;
+            selectedOrderListView.UseCompatibleStateImageBehavior = false;
+            selectedOrderListView.View = View.Details;
             // 
             // ID
             // 
@@ -392,7 +392,7 @@
             Controls.Add(inPreparationButton);
             Controls.Add(servedButton);
             Controls.Add(preparedButton);
-            Controls.Add(SelectedOrderListView);
+            Controls.Add(selectedOrderListView);
             Controls.Add(panelStatus);
             Controls.Add(pictureBoxChapeauLogo);
             Controls.Add(panel4);
@@ -431,7 +431,7 @@
         private Label label6;
         private Label label7;
         private Panel panelStatus;
-        private ListView SelectedOrderListView;
+        private ListView selectedOrderListView;
         private ColumnHeader ID;
         private ColumnHeader Status;
         private Button preparedButton;
