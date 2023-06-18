@@ -215,8 +215,6 @@ namespace ChapeauUI
                 DisplayUnpreparedOrders(GetUnpreparedItems());
             }
         }
-
-
         private void UpdateItemStatus(OrderStatus status)
         {
             try
@@ -235,8 +233,10 @@ namespace ChapeauUI
                 if (status == OrderStatus.Served)
                 {
                     new ActivityLogger($"{item.Name} has been served!");
+                    selectedOrderListView.Items.Clear();
                     ordersListView.Items.Clear(); // Remove the served item from the list view
                 }
+          
             }
             catch (Exception error)
             {
