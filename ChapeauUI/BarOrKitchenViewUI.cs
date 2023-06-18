@@ -79,7 +79,6 @@ namespace ChapeauUI
                     typeOfViewLabel.Text = "Bar View";
                 }
 
-
                 comboBoxFiltering.Text = "Show";
             }
             catch (Exception error)
@@ -168,6 +167,7 @@ namespace ChapeauUI
                 li.SubItems.Add(item.Status.ToString());
             }
             li.SubItems.Add(item.PreparationTimer.ToString());
+            li.Tag = item;
             selectedOrderListView.Items.Add(li);
         }
 
@@ -220,9 +220,6 @@ namespace ChapeauUI
             try
             {
                 ContainsTableDataService containsTableDataService = new ContainsTableDataService();
-
-                if (ordersListView.SelectedItems.Count == 0)
-                    return;
 
                 Item item = (Item)ordersListView.SelectedItems[0].Tag;
                 item.Status = status;
