@@ -13,7 +13,7 @@ namespace ChapeauDAL
 {
     public class ItemsToPrepareDao : BaseDao
     {
-        public List<Item> GetAllItemsToPrepare() 
+        public List<Item> GetAllItemsToPrepare()   //Cezar's method 
         {
             // sql query
             string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_items.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_items.[menu_id], [order].[order_taken_time],[order].comments,menu_items.time_to_prepare\r\n\t" +
@@ -27,7 +27,7 @@ namespace ChapeauDAL
             return ReadTables(ExecuteSelectQuery(query));
         }
 
-        public List<Item> GetItemsToPrepareByTableId(int tableId)
+        public List<Item> GetItemsToPrepareByTableId(int tableId)   //Rafal's method, it gets based on table id
         {
             // sql query
             string query = "SELECT [order_id],COUNT(ORDER_ID) AS [COUNT],menu_items.[name],table_id,[contains].[status],[contains].menu_item_id,covers,menu_items.[menu_id], [order].[order_taken_time],[order].comments,menu_items.time_to_prepare\r\n\t" +

@@ -11,10 +11,5 @@ namespace ChapeauModel
         public int OrderId { get; set; }
         public int MenuItemId { get; set; }
         public OrderStatus Status { get; set; }
-
-        public override string ToString()
-        {
-            return $"";
-        }
     }
 }

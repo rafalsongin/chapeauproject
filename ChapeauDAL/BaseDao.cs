@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Runtime.CompilerServices;
 
 namespace ChapeauDAL
 {
@@ -37,27 +38,6 @@ namespace ChapeauDAL
             conn.Close();
         }
 
-        /* For Insert/Update/Delete Queries with transaction */
-        protected void ExecuteEditTranQuery(string query, SqlParameter[] sqlParameters, SqlTransaction sqlTransaction)
-        {
-            SqlCommand command = new SqlCommand(query, conn, sqlTransaction);
-
-            try
-            {
-                command.Parameters.AddRange(sqlParameters);
-                adapter.InsertCommand = command;
-                command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-            finally
-            {
-                CloseConnection();
-            }
-        }
-
         /* For Insert/Update/Delete Queries */
         protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
         {
@@ -81,7 +61,7 @@ namespace ChapeauDAL
             }
         }
 
-        /* For Select Queries with sql parameters */
+        /* For Select Queries with sql parameters */ //this one returns based on an id or smth like that
         protected DataTable ExecuteSelectQueryWithParameters(string query, params SqlParameter[] sqlParameters)
         {
             SqlCommand command = new SqlCommand();
@@ -110,7 +90,7 @@ namespace ChapeauDAL
             return dataTable;
         }
 
-        protected DataTable ExecuteSelectQuery(string query)
+        protected DataTable ExecuteSelectQuery(string query)      //this returns without the need of a parameter, e.g. table id
         {
             SqlCommand command = new SqlCommand();
             DataTable dataTable;

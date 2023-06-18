@@ -17,7 +17,6 @@ namespace ChapeauUI
     public partial class BarOrKitchenViewUI : Form
     {
         private Employee employee;
-        private ContainsTableDataService containsTableDataService = new ContainsTableDataService();
 
         public BarOrKitchenViewUI(Employee employee)
         {
@@ -218,6 +217,8 @@ namespace ChapeauUI
         {
             try
             {
+                ContainsTableDataService containsTableDataService = new ContainsTableDataService();
+
                 if (ordersListView.SelectedItems.Count == 0)
                     return;
 
