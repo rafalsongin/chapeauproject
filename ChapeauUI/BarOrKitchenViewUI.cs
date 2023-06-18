@@ -32,7 +32,7 @@ namespace ChapeauUI
             }
 
         }
-
+        #region Service Layer Connected Methods
         // get the stuff from Service layer methods
         private List<Item> GetUnpreparedItems()
         {
@@ -65,9 +65,10 @@ namespace ChapeauUI
             }
             return itemsList;
         }
+        #endregion
 
 
-        protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
+        protected void LoadForm(object sender, EventArgs e)           // used to show the dishes or drinks immediately after the form loads
         {
             try
             {
@@ -88,6 +89,7 @@ namespace ChapeauUI
 
         }
 
+        #region Display Methods
         //Display methods -----------
 
         private void DisplayUnpreparedOrders(List<Item> items)           // displayes the dishes which have not been served yet in the list view
@@ -119,7 +121,9 @@ namespace ChapeauUI
                 ordersListView.Items.Add(li);
             }
         }
+        #endregion
 
+        #region State of Order Buttons
         // buttons --------------
 
 
@@ -144,6 +148,7 @@ namespace ChapeauUI
         }
 
         // -----------
+        #endregion
         private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)            // used to show the picked order in the other list
         {
             selectedOrderListView.Items.Clear();
@@ -158,6 +163,7 @@ namespace ChapeauUI
             Item item = (Item)ordersListView.SelectedItems[0].Tag;
 
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
+
             if (item.Status == OrderStatus.InPreparation)
             {
                 li.SubItems.Add("In Preparation");
@@ -166,6 +172,7 @@ namespace ChapeauUI
             {
                 li.SubItems.Add(item.Status.ToString());
             }
+
             li.SubItems.Add(item.PreparationTimer.ToString());
             li.Tag = item;
             selectedOrderListView.Items.Add(li);
