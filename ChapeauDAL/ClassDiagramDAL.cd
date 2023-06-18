@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapeauDAL.BaseDao" Collapsed="true">
+    <Position X="11.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAiABAAAQQAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>BaseDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.BillDao" Collapsed="true">
+    <Position X="16.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>BillDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.ContainsTableDataDao" Collapsed="true">
+    <Position X="16.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQBAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContainsTableDataDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.DishDao" Collapsed="true">
+    <Position X="16.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DishDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.DrinkDao" Collapsed="true">
+    <Position X="16.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>DrinkDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.EmployeeDao" Collapsed="true">
+    <Position X="16.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAQAAAAAAABAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EmployeeDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.ItemsPreparedDao" Collapsed="true">
+    <Position X="16.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>ItemsPreparedDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.ItemsToPrepareDao" Collapsed="true">
+    <Position X="16.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>ItemsToPrepareDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.MenuDao" Collapsed="true">
+    <Position X="16.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.MenuItemDao" Collapsed="true">
+    <Position X="16.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuItemDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.OrderDao" Collapsed="true">
+    <Position X="16.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>OrderDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.PaymentDao" Collapsed="true">
+    <Position X="16.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PaymentDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauDAL.TableDao" Collapsed="true">
+    <Position X="16.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgCQAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAA=</HashCode>
+      <FileName>TableDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
