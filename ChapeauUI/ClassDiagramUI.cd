@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapeauUI.Properties.Resources" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.AllTablesViewUI" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BCAAEAAMQCAiAACEYCiCQUBCEAAAAkAGAAhAAgCIEAg=</HashCode>
+      <FileName>AllTablesViewUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.BarOrKitchenViewUI" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAACGAIMAOBiiBAADGSIgACCRAACQABlEABICQAAIQA=</HashCode>
+      <FileName>BarOrKitchenViewUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.LoginUI" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAoFAAJACAAAAAAAACJAAQSAAAQAgAAAQAAAAIAAAA=</HashCode>
+      <FileName>LoginUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.OrderViewUI" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYEAAIACACAACMAIiASQACAAIACgAAAAAhIAAAAAA=</HashCode>
+      <FileName>OrderViewUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.Program" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAABAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauUI.TableStatusUI" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQkAgIACACQBCEgAmASQACCAQIQgAASCABAAAAAAA=</HashCode>
+      <FileName>TableStatusUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

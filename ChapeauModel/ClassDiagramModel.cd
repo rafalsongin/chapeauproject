@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ChapeauModel.Bill" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAEFBAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Bill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.ContainsTableData" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAEAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ContainsTableData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Dish" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Dish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Drink" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAEAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Drink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Employee" Collapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAACAAAAAEEAAAQBAAAAEQAAAAAAAAAAAEAAg=</HashCode>
+      <FileName>Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Item" Collapsed="true">
+    <Position X="3.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAEAAAACAAAAEAAAAQAAQAAAAAAAAAAACQAIAA=</HashCode>
+      <FileName>Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Menu" Collapsed="true">
+    <Position X="5.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.MenuItem" Collapsed="true">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAARAAAAAEAAAAAAQAAAAABAAAAAAAAAAACAA=</HashCode>
+      <FileName>MenuItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Order" Collapsed="true">
+    <Position X="1.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAUAAEAAAQAAAAACAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Payment" Collapsed="true">
+    <Position X="3.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAUAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Payment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChapeauModel.Table" Collapsed="true">
+    <Position X="5.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAEAAAAAAAEAAAAAAACAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ChapeauModel.EmployeeRole" Collapsed="true">
+    <Position X="1.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACDCAAAAAAAAAAACA=</HashCode>
+      <FileName>EmployeeRole.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChapeauModel.MenuCategory" Collapsed="true">
+    <Position X="3.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAUAJAAIAAAAAAAAAAAAAAAAAEAQAAAAEAAAgAAAAA=</HashCode>
+      <FileName>MenuCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChapeauModel.MenuType" Collapsed="true">
+    <Position X="5.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MenuType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChapeauModel.OrderStatus" Collapsed="true">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAIgBAAAA=</HashCode>
+      <FileName>OrderStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChapeauModel.PaymentMethod" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAACAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PaymentMethod.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ChapeauModel.TableStatus" Collapsed="true">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAEAgAAAAAAAAAAABAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>TableStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
