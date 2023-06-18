@@ -12,56 +12,6 @@ namespace ChapeauDAL
 {
     public class ContainsTableDataDao : BaseDao
     {
-       
-        public List<ContainsTableData> GetAllData()
-        {
-            string query = "SELECT order_id, menu_item_id,status FROM [contains]";
-
-            return ReadTables(ExecuteSelectQuery(query));
-        }
-
-        private List<ContainsTableData> ReadTables(DataTable dataTable)
-        {
-            List<ContainsTableData> datas = new List<ContainsTableData>();
-
-              string statusString;                        //used for the conversion below 
-              OrderStatus status = new OrderStatus();
-
-            foreach (DataRow datarow in dataTable.Rows)
-            {
-
-                statusString = (string)datarow["status"];
-
-                if (statusString == "Pending")
-                {
-                    status = OrderStatus.Pending;
-                }
-                else if (statusString == "InPreparation")
-                {
-                    status = OrderStatus.InPreparation;
-                }
-                else if (statusString == "Prepared")
-                {
-                    status = OrderStatus.Prepared;
-                }
-                else
-                {
-                    status = OrderStatus.Served;
-                }
-
-
-                ContainsTableData data = new ContainsTableData()
-                {
-                    OrderId = (int)datarow["order_id"],
-                    MenuItemId = (int)datarow["menu_item_id"],
-                    Status = status
-                };
-
-                datas.Add(data);
-            }
-            return datas;
-        }
-
         public void UpdateItemStatusInDB(int orderId,int menuItemId,OrderStatus orderStatus)
         {
             string querry = "Update [contains] SET [status] = @Status WHERE order_id = @OrderID AND menu_item_id = @menu_item_id;";

@@ -26,10 +26,11 @@ namespace ChapeauDAL
 
         private List<Item> ReadTables(DataTable dataTable)
         {
-            int id;
+            int id;    //for category
             MenuType menuType = new MenuType();
-            string statusString;
-            OrderStatus status = new OrderStatus(); //used to convert the status
+
+            string statusString;  //for status
+            OrderStatus status = new OrderStatus(); 
 
             List<Item> itemsPrepared = new List<Item>();
 
@@ -37,7 +38,7 @@ namespace ChapeauDAL
             {
                 statusString = (string)datarow["status"];
 
-                if (statusString == "Pending")
+                if (statusString == "Pending")       //used to translate from string to enum
                 {
                     status = OrderStatus.Pending;
                 }
@@ -56,7 +57,7 @@ namespace ChapeauDAL
 
                 id = (int)datarow["menu_id"];
 
-                if (id == 42342)
+                if (id == 42342)                       //used to translate from int to enum, each number represents a category
                 {
                     menuType = MenuType.Lunch;
                 }

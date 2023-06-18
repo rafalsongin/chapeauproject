@@ -30,25 +30,42 @@ namespace ChapeauUI
                 MessageBox.Show(error.Message);
                 new ErrorLogger(error.Message);
             }
-        
+
         }
 
         // get the stuff from Service layer methods
         private List<Item> GetUnpreparedItems()
         {
-                ItemsToPrepareService items = new ItemsToPrepareService();
-                List<Item> itemsList = new List<Item>();
+            ItemsToPrepareService items = new ItemsToPrepareService();
+            List<Item> itemsList = new List<Item>();
 
-                if (employee.Role == EmployeeRole.Chef)
-                {
-                    itemsList = items.GetItemsDishes();
-                }
-                else
-                {
-                    itemsList = items.GetItemsDrinks();
-                }
-                return itemsList;
+            if (employee.Role == EmployeeRole.Chef)
+            {
+                itemsList = items.GetItemsDishes();
+            }
+            else
+            {
+                itemsList = items.GetItemsDrinks();
+            }
+            return itemsList;
         }
+
+        private List<Item> GetPreparedItems()                           //make a list of all the prepared items  
+        {
+            ItemsPreparedService items = new ItemsPreparedService();
+            List<Item> itemsList = new List<Item>();
+
+            if (employee.Role == EmployeeRole.Chef)
+            {
+                itemsList = items.GetItemsDishes();
+            }
+            else
+            {
+                itemsList = items.GetItemsDrinks();
+            }
+            return itemsList;
+        }
+
 
         protected void LoadForm(object sender, EventArgs e)           // used to show the dishes/drinks immediately after the form loads
         {
@@ -65,14 +82,31 @@ namespace ChapeauUI
 
                 comboBoxFiltering.Text = "Show";
             }
-            catch(Exception error) 
+            catch (Exception error)
             {
                 throw new Exception("Error! The application didn't load properly." + error);
             }
 
         }
 
+        //Display methods -----------
+
         private void DisplayUnpreparedOrders(List<Item> items)           // displayes the dishes which have not been served yet in the list view
+        {
+            foreach (Item item in items)
+            {
+                ListViewItem li = new ListViewItem(item.OrderId.ToString());
+                li.SubItems.Add(item.Covers.ToString());
+                li.SubItems.Add(item.Count.ToString());
+                li.SubItems.Add(item.Name);
+                li.SubItems.Add(item.OrderTime.ToString());
+                li.SubItems.Add(item.Comments);
+                li.Tag = item;
+                ordersListView.Items.Add(li);
+            }
+        }
+
+        private void DisplayPreparedOrders(List<Item> items)
         {
             foreach (Item item in items)
             {
@@ -94,14 +128,14 @@ namespace ChapeauUI
         {
             new ActivityLogger($"{employee.FirstName} {employee.LastName} is preparing order!");
             UpdateItemStatus(OrderStatus.InPreparation);
-          
+
         }
 
         private void PreparedButton_Click(object sender, EventArgs e)
         {
             new ActivityLogger($"{employee.FirstName} {employee.LastName} is prepared order!");
             UpdateItemStatus(OrderStatus.Prepared);
-           
+
         }
 
         private void ServedButton_Click(object sender, EventArgs e)
@@ -113,7 +147,7 @@ namespace ChapeauUI
         // -----------
         private void ordersListView_SelectedIndexChanged(object sender, EventArgs e)            // used to show the picked order in the other list
         {
-            SelectedOrderListView.Items.Clear();
+            selectedOrderListView.Items.Clear();
             if (ordersListView.SelectedItems.Count == 0)
                 return;
             UpdateListViewOfSelectedOrder();
@@ -121,7 +155,7 @@ namespace ChapeauUI
 
         private void UpdateListViewOfSelectedOrder()    // moving the order to the other listview
         {
-            SelectedOrderListView.Items.Clear();
+            selectedOrderListView.Items.Clear();
             Item item = (Item)ordersListView.SelectedItems[0].Tag;
 
             ListViewItem li = new ListViewItem(item.OrderId.ToString());
@@ -134,19 +168,19 @@ namespace ChapeauUI
                 li.SubItems.Add(item.Status.ToString());
             }
             li.SubItems.Add(item.PreparationTimer.ToString());
-            SelectedOrderListView.Items.Add(li);
+            selectedOrderListView.Items.Add(li);
         }
 
-        private void OpenUI(Form newForm)                          //for logout
+        private void OpenUI(Form newForm)                          //for logout, got it from Rafal
         {
-            // define active form (LoginUI) and hide it
+            // define active form and hide it
             Form activeForm = ActiveForm;
             activeForm.Hide();
 
-            // show new form, which needs to be open
+            // show new form (LoginUI), which needs to be open
             newForm.ShowDialog();
 
-            // close previous form (LoginUI), so it's not running in the background
+            // close previous form, so it's not running in the background
             activeForm.Close();
         }
 
@@ -163,7 +197,7 @@ namespace ChapeauUI
             if (comboBoxFiltering.SelectedIndex == 0)                                 //show finished orders of today
             {
                 ordersListView.Items.Clear();
-                SelectedOrderListView.Hide();
+                selectedOrderListView.Hide();
                 inPreparationButton.Hide();
                 preparedButton.Hide();
                 servedButton.Hide();
@@ -173,7 +207,7 @@ namespace ChapeauUI
             else                               // show running orders
             {
                 ordersListView.Items.Clear();
-                SelectedOrderListView.Show();
+                selectedOrderListView.Show();
                 inPreparationButton.Show();
                 preparedButton.Show();
                 servedButton.Show();
@@ -182,36 +216,6 @@ namespace ChapeauUI
             }
         }
 
-        private List<Item> GetPreparedItems()                           //make a list of all the prepared items  
-        {
-            ItemsPreparedService items = new ItemsPreparedService();
-            List<Item> itemsList = new List<Item>();
-
-            if (employee.Role == EmployeeRole.Chef)
-            {
-                itemsList = items.GetItemsDishes();
-            }
-            else
-            {
-                itemsList = items.GetItemsDrinks();
-            }
-            return itemsList;
-        }
-
-        private void DisplayPreparedOrders(List<Item> items)           // displayes the dishes which have not been served yet in the list view
-        {
-            foreach (Item item in items)
-            {
-                ListViewItem li = new ListViewItem(item.OrderId.ToString());
-                li.SubItems.Add(item.Covers.ToString());
-                li.SubItems.Add(item.Count.ToString());
-                li.SubItems.Add(item.Name);
-                li.SubItems.Add(item.OrderTime.ToString());
-                li.SubItems.Add(item.Comments);
-                li.Tag = item;
-                ordersListView.Items.Add(li);
-            }
-        }
 
         private void UpdateItemStatus(OrderStatus status)
         {
